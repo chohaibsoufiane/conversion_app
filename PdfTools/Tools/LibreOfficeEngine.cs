@@ -21,7 +21,7 @@ public sealed class LibreOfficeEngine : IDocumentTool
     // -------------------------------------------------------------------------
 
     public string Name        => "Word to PDF";
-    public string Description => "Pixel-perfect conversion powered by a bundled LibreOffice engine.";
+    public string Description => "Pixel-perfect conversion between Microsoft Word and PDF formats.";
 
     // -------------------------------------------------------------------------
     // Configuration

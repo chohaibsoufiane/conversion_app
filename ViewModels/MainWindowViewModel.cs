@@ -43,12 +43,33 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private string _statusText = "Ready";
 
+    [ObservableProperty]
+    private ConversionType _currentConversionType = ConversionType.WordToPdf;
+
+    [ObservableProperty]
+    private string _activeToolTitle = "Word to PDF";
+
+    [ObservableProperty]
+    private string _inputFilePath = string.Empty;
+
+    [ObservableProperty]
+    private string _outputFilePath = string.Empty;
+
     /// <summary>
     /// The flow direction for the log panel, dynamically set based on
     /// whether the majority of processed filenames are RTL or LTR.
     /// </summary>
     [ObservableProperty]
     private FlowDirection _logFlowDirection = FlowDirection.LeftToRight;
+
+    [ObservableProperty]
+    private bool _isStatusVisible;
+
+    [ObservableProperty]
+    private bool _isSuccess;
+
+    [ObservableProperty]
+    private bool _isError;
 
     // -------------------------------------------------------------------------
     // Window handle — set by code-behind for FolderPicker interop
@@ -158,6 +179,95 @@ public partial class MainWindowViewModel : ObservableObject
         {
             AppendLog($"\u2717 FATAL: {ex.Message}");
             StatusText = "Error — see log for details.";
+        }
+        finally
+        {
+            IsProcessing = false;
+        }
+    }
+
+    [RelayCommand]
+    private void SwapDirection()
+    {
+        switch (CurrentConversionType)
+        {
+            case ConversionType.WordToPdf:
+                CurrentConversionType = ConversionType.PdfToWord;
+                ActiveToolTitle = "PDF to Word";
+                break;
+            case ConversionType.PdfToWord:
+                CurrentConversionType = ConversionType.WordToPdf;
+                ActiveToolTitle = "Word to PDF";
+                break;
+            case ConversionType.ExcelToPdf:
+                CurrentConversionType = ConversionType.PdfToExcel;
+                ActiveToolTitle = "PDF to Excel";
+                break;
+            case ConversionType.PdfToExcel:
+                CurrentConversionType = ConversionType.ExcelToPdf;
+                ActiveToolTitle = "Excel to PDF";
+                break;
+        }
+
+        // Auto-update extensions if paths exist
+        if (!string.IsNullOrEmpty(InputFilePath))
+        {
+            var ext = CurrentConversionType switch
+            {
+                ConversionType.WordToPdf => ".pdf",
+                ConversionType.PdfToWord => ".docx",
+                ConversionType.ExcelToPdf => ".pdf",
+                ConversionType.PdfToExcel => ".xlsx",
+                _ => ".pdf"
+            };
+            OutputFilePath = Path.ChangeExtension(InputFilePath, ext);
+        }
+    }
+
+    [RelayCommand]
+    private async Task ConvertAsync()
+    {
+        if (string.IsNullOrEmpty(InputFilePath) || string.IsNullOrEmpty(OutputFilePath))
+        {
+            StatusText = "Please select input and output files.";
+            return;
+        }
+
+        IsProcessing = true;
+        IsStatusVisible = true;
+        IsSuccess = false;
+        IsError = false;
+        StatusText = "Initializing engine...";
+
+        try
+        {
+            await Task.Run(async () =>
+            {
+                switch (CurrentConversionType)
+                {
+                    case ConversionType.WordToPdf:
+                        await LibreOfficeProcessor.ConvertAsync(InputFilePath, OutputFilePath, "pdf");
+                        break;
+                    case ConversionType.PdfToWord:
+                        await LibreOfficeProcessor.ConvertAsync(InputFilePath, OutputFilePath, "docx");
+                        break;
+                    case ConversionType.ExcelToPdf:
+                        await LibreOfficeProcessor.ConvertAsync(InputFilePath, OutputFilePath, "pdf");
+                        break;
+                    case ConversionType.PdfToExcel:
+                        await LibreOfficeProcessor.ConvertAsync(InputFilePath, OutputFilePath, "xlsx");
+                        break;
+                }
+            });
+
+            StatusText = "Conversion successful!";
+            IsSuccess = true;
+            HistoryService.Instance.AddItem(OutputFilePath, ActiveToolTitle, CurrentConversionType == ConversionType.PdfToWord ? "\uE8A5" : "\uEA90");
+        }
+        catch (Exception ex)
+        {
+            StatusText = $"Error: {ex.Message}";
+            IsError = true;
         }
         finally
         {

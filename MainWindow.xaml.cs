@@ -245,41 +245,22 @@ public sealed partial class MainWindow : Window
     /// </summary>
     private void PdfToolsView_ToolRequested(string toolName)
     {
-        switch (toolName)
+        var type = toolName switch
         {
-            case "Word to PDF":
-                WordToPdfDetailView.Initialize(
-                    WinRT.Interop.WindowNative.GetWindowHandle(this),
-                    DispatcherQueue);
-                NavigateTo(WordToPdfDetailView);
-                break;
+            "Word to PDF" => Models.ConversionType.WordToPdf,
+            "Excel to PDF" => Models.ConversionType.ExcelToPdf,
+            _ => Models.ConversionType.WordToPdf
+        };
 
-            case "Excel to PDF":
-                ExcelToPdfDetailView.Initialize(
-                    WinRT.Interop.WindowNative.GetWindowHandle(this),
-                    DispatcherQueue);
-                NavigateTo(ExcelToPdfDetailView);
-                break;
+        ViewModel.CurrentConversionType = type;
+        ViewModel.ActiveToolTitle = toolName;
 
-            case "PDF to Word":
-                PdfToWordDetailView.Initialize(
-                    WinRT.Interop.WindowNative.GetWindowHandle(this),
-                    DispatcherQueue);
-                NavigateTo(PdfToWordDetailView);
-                break;
-        }
+        ConversionDetailView.Initialize(ViewModel, WinRT.Interop.WindowNative.GetWindowHandle(this));
+        NavigateTo(ConversionDetailView);
     }
 
-    /// <summary>Returns from the Word-to-PDF view back to the PDF tools list.</summary>
-    private void WordToPdfDetailView_BackRequested()
-        => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
-
-    /// <summary>Returns from the Excel-to-PDF view back to the PDF tools list.</summary>
-    private void ExcelToPdfDetailView_BackRequested()
-        => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
-
-    /// <summary>Returns from the PDF-to-Word view back to the PDF tools list.</summary>
-    private void PdfToWordDetailView_BackRequested()
+    /// <summary>Returns from the conversion view back to the PDF tools list.</summary>
+    private void ConversionDetailView_BackRequested()
         => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
 
     private void SplashOverlay_Loaded(object sender, RoutedEventArgs e)

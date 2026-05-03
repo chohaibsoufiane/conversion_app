@@ -288,35 +288,15 @@
                     </pdf:PdfToolsView.RenderTransform>
                 </pdf:PdfToolsView>
 
-                <!-- Word-to-PDF Detail View -->
-                <pdf:WordToPdfDetailView x:Name="WordToPdfDetailView"
+                <!-- Unified Conversion Detail View -->
+                <pdf:ConversionDetailView x:Name="ConversionDetailView"
                                          Visibility="Collapsed"
                                          RenderTransformOrigin="0.5,0.5"
-                                         BackRequested="WordToPdfDetailView_BackRequested">
-                    <pdf:WordToPdfDetailView.RenderTransform>
+                                         BackRequested="ConversionDetailView_BackRequested">
+                    <pdf:ConversionDetailView.RenderTransform>
                         <CompositeTransform/>
-                    </pdf:WordToPdfDetailView.RenderTransform>
-                </pdf:WordToPdfDetailView>
-
-                <!-- Excel-to-PDF Detail View -->
-                <pdf:ExcelToPdfDetailView x:Name="ExcelToPdfDetailView"
-                                          Visibility="Collapsed"
-                                          RenderTransformOrigin="0.5,0.5"
-                                          BackRequested="ExcelToPdfDetailView_BackRequested">
-                    <pdf:ExcelToPdfDetailView.RenderTransform>
-                        <CompositeTransform/>
-                    </pdf:ExcelToPdfDetailView.RenderTransform>
-                </pdf:ExcelToPdfDetailView>
-
-                <!-- PDF-to-Word Detail View -->
-                <pdf:PdfToWordDetailView x:Name="PdfToWordDetailView"
-                                         Visibility="Collapsed"
-                                         RenderTransformOrigin="0.5,0.5"
-                                         BackRequested="PdfToWordDetailView_BackRequested">
-                    <pdf:PdfToWordDetailView.RenderTransform>
-                        <CompositeTransform/>
-                    </pdf:PdfToWordDetailView.RenderTransform>
-                </pdf:PdfToWordDetailView>
+                    </pdf:ConversionDetailView.RenderTransform>
+                </pdf:ConversionDetailView>
             </Grid>
         </NavigationView>
 

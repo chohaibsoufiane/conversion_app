@@ -16,7 +16,7 @@ public sealed class ExcelToPdfEngine : IDocumentTool
     // -------------------------------------------------------------------------
 
     public string Name        => "Excel to PDF";
-    public string Description => "Convert spreadsheets to PDF using the bundled LibreOffice engine.";
+    public string Description => "High-fidelity conversion between Microsoft Excel and PDF formats.";
 
     // -------------------------------------------------------------------------
     // Configuration

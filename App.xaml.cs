@@ -22,10 +22,9 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        // Register PDF tools — LibreOffice engine for pixel-perfect conversion
+        // Register PDF tools — consolidated bi-directional tools
         PdfTools.ToolRegistry.Register(new PdfTools.Tools.LibreOfficeEngine());
         PdfTools.ToolRegistry.Register(new PdfTools.Tools.ExcelToPdfEngine());
-        PdfTools.ToolRegistry.Register(new PdfTools.Tools.PdfToWordEngine());
 
         _mainWindow = new MainWindow();
         _mainWindow.Activate();
