@@ -122,11 +122,43 @@ public sealed partial class MainWindow : Window
                     DispatcherQueue);
                 WordToPdfDetailView.Visibility = Visibility.Visible;
                 break;
+
+            case "Excel to PDF":
+                HideAllViews();
+                ExcelToPdfDetailView.Initialize(
+                    WinRT.Interop.WindowNative.GetWindowHandle(this),
+                    DispatcherQueue);
+                ExcelToPdfDetailView.Visibility = Visibility.Visible;
+                break;
+
+            case "PDF to Word":
+                HideAllViews();
+                PdfToWordDetailView.Initialize(
+                    WinRT.Interop.WindowNative.GetWindowHandle(this),
+                    DispatcherQueue);
+                PdfToWordDetailView.Visibility = Visibility.Visible;
+                break;
         }
     }
 
     /// <summary>Returns from the Word-to-PDF view back to the dashboard.</summary>
     private void WordToPdfDetailView_BackRequested()
+    {
+        HideAllViews();
+        PdfToolsView.Visibility = Visibility.Visible;
+        PdfToolsView.RefreshCards();
+    }
+
+    /// <summary>Returns from the Excel-to-PDF view back to the dashboard.</summary>
+    private void ExcelToPdfDetailView_BackRequested()
+    {
+        HideAllViews();
+        PdfToolsView.Visibility = Visibility.Visible;
+        PdfToolsView.RefreshCards();
+    }
+
+    /// <summary>Returns from the PDF-to-Word view back to the dashboard.</summary>
+    private void PdfToWordDetailView_BackRequested()
     {
         HideAllViews();
         PdfToolsView.Visibility = Visibility.Visible;
@@ -139,5 +171,7 @@ public sealed partial class MainWindow : Window
         PdfToolsView.Visibility          = Visibility.Collapsed;
         SettingsView.Visibility          = Visibility.Collapsed;
         WordToPdfDetailView.Visibility   = Visibility.Collapsed;
+        ExcelToPdfDetailView.Visibility  = Visibility.Collapsed;
+        PdfToWordDetailView.Visibility   = Visibility.Collapsed;
     }
 }

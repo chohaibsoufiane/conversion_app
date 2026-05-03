@@ -19,6 +19,8 @@ public partial class App : Application
     {
         // Register PDF tools — LibreOffice engine for pixel-perfect conversion
         PdfTools.ToolRegistry.Register(new PdfTools.Tools.LibreOfficeEngine());
+        PdfTools.ToolRegistry.Register(new PdfTools.Tools.ExcelToPdfEngine());
+        PdfTools.ToolRegistry.Register(new PdfTools.Tools.PdfToWordEngine());
 
         _mainWindow = new MainWindow();
         _mainWindow.Activate();

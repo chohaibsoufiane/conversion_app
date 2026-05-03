@@ -195,6 +195,16 @@
                 <pdf:WordToPdfDetailView x:Name="WordToPdfDetailView"
                                          Visibility="Collapsed"
                                          BackRequested="WordToPdfDetailView_BackRequested"/>
+
+                <!-- Excel-to-PDF Detail View -->
+                <pdf:ExcelToPdfDetailView x:Name="ExcelToPdfDetailView"
+                                          Visibility="Collapsed"
+                                          BackRequested="ExcelToPdfDetailView_BackRequested"/>
+
+                <!-- PDF-to-Word Detail View -->
+                <pdf:PdfToWordDetailView x:Name="PdfToWordDetailView"
+                                         Visibility="Collapsed"
+                                         BackRequested="PdfToWordDetailView_BackRequested"/>
             </Grid>
         </NavigationView>
     </Grid>
