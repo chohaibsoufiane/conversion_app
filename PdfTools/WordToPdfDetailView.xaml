@@ -5,6 +5,20 @@
     xmlns:local="using:ConversionApp.PdfTools">
 
     <Grid>
+        <!-- Navigation -->
+        <Button Click="BackButton_Click"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="20,20,0,0"
+                Background="Transparent"
+                BorderThickness="0"
+                ToolTipService.ToolTip="Back to PDF Tools">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon Glyph="&#xE72B;" FontSize="16"/>
+                <TextBlock Text="Back"/>
+            </StackPanel>
+        </Button>
+
         <!-- Selection Phase -->
         <Grid x:Name="FileSelectionPhase" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Spacing="28" HorizontalAlignment="Center" MaxWidth="640" Padding="40">
@@ -48,16 +62,16 @@
                 </Button>
 
                 <!-- Status Card -->
-                <Border Visibility="{x:Bind ViewModel.IsStatusVisible, Mode=OneWay}" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Padding="16,12">
+                <Border Visibility="{x:Bind BoolToVis(ViewModel.IsStatusVisible), Mode=OneWay}" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Padding="16,12">
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <FontIcon Glyph="&#xE73E;" Foreground="#4CAF50" Visibility="{x:Bind ViewModel.IsSuccess, Mode=OneWay}"/>
-                        <FontIcon Glyph="&#xEA39;" Foreground="#F44336" Visibility="{x:Bind ViewModel.IsError, Mode=OneWay}"/>
+                        <FontIcon Glyph="&#xE73E;" Foreground="#4CAF50" Visibility="{x:Bind BoolToVis(ViewModel.IsSuccess), Mode=OneWay}"/>
+                        <FontIcon Glyph="&#xEA39;" Foreground="#F44336" Visibility="{x:Bind BoolToVis(ViewModel.IsError), Mode=OneWay}"/>
                         <TextBlock Text="{x:Bind ViewModel.StatusText, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Border>
 
                 <!-- Success Actions -->
-                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center" Visibility="{x:Bind ViewModel.IsSuccess, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center" Visibility="{x:Bind BoolToVis(ViewModel.IsSuccess), Mode=OneWay}">
                     <Button Command="{x:Bind ViewModel.OpenFileCommand}" Padding="16,8">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="&#xE8A5;" FontSize="14"/>
@@ -72,8 +86,7 @@
                     </Button>
                 </StackPanel>
 
-                <!-- Error Actions -->
-                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center" Visibility="{x:Bind ViewModel.IsError, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center" Visibility="{x:Bind BoolToVis(ViewModel.IsError), Mode=OneWay}">
                     <Button Command="{x:Bind ViewModel.CopyErrorCommand}" Padding="16,8">
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon Glyph="&#xE8C8;" FontSize="14"/>
@@ -81,8 +94,6 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
-
-                <HyperlinkButton Content="Back to PDF Tools" Click="BackButton_Click" HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </Grid>

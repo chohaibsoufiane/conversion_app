@@ -8,16 +8,42 @@
     mc:Ignorable="d">
 
     <Grid Background="Transparent">
+        <Grid.Resources>
+            <!-- Splash animation -->
+            <Storyboard x:Key="SplashStoryboard" x:Name="SplashStoryboard" Completed="SplashStoryboard_Completed">
+                <DoubleAnimation Storyboard.TargetName="SplashOverlay"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1.0" To="0.0" Duration="0:0:0.5"
+                                 BeginTime="0:0:2.0" />
+                <DoubleAnimation Storyboard.TargetName="SplashLogo"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0.0" To="1.0" Duration="0:0:1.0">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Storyboard.TargetName="SplashLogoTransform"
+                                 Storyboard.TargetProperty="Y"
+                                 From="20" To="0" Duration="0:0:1.0">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Overlay to control Mica intensity (0 = max mica, 1 = solid background) -->
+        <Border x:Name="MicaOverlay" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Opacity="0" Grid.RowSpan="2"/>
+
         <!-- Custom Title Bar -->
         <Grid x:Name="AppTitleBar" 
               Height="32" 
               VerticalAlignment="Top">
-            <TextBlock Text="Batch Document Converter" 
+            <TextBlock Text="Eezy Pro" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center"
                        Style="{StaticResource CaptionTextBlockStyle}"
@@ -33,7 +59,8 @@
                         IsPaneOpen="False"
                         ItemInvoked="NavView_ItemInvoked">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Document" Content="Conversion" Tag="Home"/>
+                <NavigationViewItem Icon="Home" Content="Home" Tag="Dashboard"/>
+                <NavigationViewItem Icon="Document" Content="Batch Conversion" Tag="BatchConverter"/>
                 <NavigationViewItem Tag="PdfTools" Content="PDF Tools">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA90;"/>
@@ -42,12 +69,63 @@
             </NavigationView.MenuItems>
 
             <Grid>
-                <!-- Home View -->
-                <Grid x:Name="HomeView" 
+                <!-- Dashboard View -->
+                <Grid x:Name="DashboardView" 
                       Padding="32,28,32,32"
                       MaxWidth="960"
                       HorizontalAlignment="Center"
-                      RowSpacing="20">
+                      VerticalAlignment="Center"
+                      RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <CompositeTransform x:Name="DashboardTransform"/>
+                    </Grid.RenderTransform>
+                    <StackPanel Spacing="32" HorizontalAlignment="Center">
+                        <StackPanel Spacing="8" HorizontalAlignment="Center">
+                            <TextBlock Text="Welcome to Eezy Pro"
+                                       FontSize="42"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="Select a tool from the menu to get started."
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        
+                        <Grid ColumnSpacing="24" HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0" Tag="BatchConverter" Click="DashboardCard_Click" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="12" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                                <StackPanel Padding="24" Spacing="16" Width="280">
+                                    <FontIcon Glyph="&#xE8A5;" FontSize="48" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="Batch Conversion" FontWeight="SemiBold" FontSize="20"/>
+                                    <TextBlock Text="Convert .docx files to structured JSON quickly and reliably." Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Grid.Column="1" Tag="PdfTools" Click="DashboardCard_Click" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="12" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                                <StackPanel Padding="24" Spacing="16" Width="280">
+                                    <FontIcon Glyph="&#xEA90;" FontSize="48" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="PDF Tools" FontWeight="SemiBold" FontSize="20"/>
+                                    <TextBlock Text="Convert PDF to Word, Excel to PDF, and more with high fidelity." Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Batch Converter View -->
+                <Grid x:Name="BatchConverterView" Visibility="Collapsed"
+                      Padding="32,28,32,32"
+                      MaxWidth="960"
+                      HorizontalAlignment="Center"
+                      RowSpacing="20"
+                      RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <CompositeTransform x:Name="BatchConverterTransform"/>
+                    </Grid.RenderTransform>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -147,7 +225,11 @@
                 </Grid>
 
                 <!-- Settings View -->
-                <Grid x:Name="SettingsView" Visibility="Collapsed" Padding="32,28,32,32" MaxWidth="960" HorizontalAlignment="Left">
+                <Grid x:Name="SettingsView" Visibility="Collapsed" Padding="32,28,32,32" MaxWidth="960" HorizontalAlignment="Left"
+                      RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <CompositeTransform x:Name="SettingsTransform"/>
+                    </Grid.RenderTransform>
                     <StackPanel Spacing="24">
                         <TextBlock Text="Settings" Style="{StaticResource TitleTextBlockStyle}" FontWeight="SemiBold"/>
                         
@@ -170,16 +252,18 @@
                                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" 
                                                    Style="{StaticResource CaptionTextBlockStyle}"/>
                                     </StackPanel>
-                                    <ComboBox x:Name="BackdropComboBox" 
+                                    <Slider x:Name="BackdropSlider" 
                                               Grid.Column="1"
                                               Width="200"
                                               VerticalAlignment="Center"
-                                              SelectedIndex="1"
-                                              SelectionChanged="BackdropComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="Mica (Default)"/>
-                                        <ComboBoxItem Content="Mica (Alt - High Tint)"/>
-                                        <ComboBoxItem Content="Acrylic (Glassy)"/>
-                                    </ComboBox>
+                                              Minimum="0"
+                                              Maximum="3"
+                                              Value="2"
+                                              StepFrequency="1"
+                                              TickFrequency="1"
+                                              SnapsTo="Ticks"
+                                              TickPlacement="Outside"
+                                              ValueChanged="BackdropSlider_ValueChanged" />
                                 </Grid>
                             </StackPanel>
                         </StackPanel>
@@ -189,23 +273,55 @@
                 <!-- PDF Tools View -->
                 <pdf:PdfToolsView x:Name="PdfToolsView"
                                   Visibility="Collapsed"
-                                  ToolRequested="PdfToolsView_ToolRequested"/>
+                                  RenderTransformOrigin="0.5,0.5"
+                                  ToolRequested="PdfToolsView_ToolRequested">
+                    <pdf:PdfToolsView.RenderTransform>
+                        <CompositeTransform x:Name="PdfToolsTransform"/>
+                    </pdf:PdfToolsView.RenderTransform>
+                </pdf:PdfToolsView>
 
                 <!-- Word-to-PDF Detail View -->
                 <pdf:WordToPdfDetailView x:Name="WordToPdfDetailView"
                                          Visibility="Collapsed"
-                                         BackRequested="WordToPdfDetailView_BackRequested"/>
+                                         RenderTransformOrigin="0.5,0.5"
+                                         BackRequested="WordToPdfDetailView_BackRequested">
+                    <pdf:WordToPdfDetailView.RenderTransform>
+                        <CompositeTransform/>
+                    </pdf:WordToPdfDetailView.RenderTransform>
+                </pdf:WordToPdfDetailView>
 
                 <!-- Excel-to-PDF Detail View -->
                 <pdf:ExcelToPdfDetailView x:Name="ExcelToPdfDetailView"
                                           Visibility="Collapsed"
-                                          BackRequested="ExcelToPdfDetailView_BackRequested"/>
+                                          RenderTransformOrigin="0.5,0.5"
+                                          BackRequested="ExcelToPdfDetailView_BackRequested">
+                    <pdf:ExcelToPdfDetailView.RenderTransform>
+                        <CompositeTransform/>
+                    </pdf:ExcelToPdfDetailView.RenderTransform>
+                </pdf:ExcelToPdfDetailView>
 
                 <!-- PDF-to-Word Detail View -->
                 <pdf:PdfToWordDetailView x:Name="PdfToWordDetailView"
                                          Visibility="Collapsed"
-                                         BackRequested="PdfToWordDetailView_BackRequested"/>
+                                         RenderTransformOrigin="0.5,0.5"
+                                         BackRequested="PdfToWordDetailView_BackRequested">
+                    <pdf:PdfToWordDetailView.RenderTransform>
+                        <CompositeTransform/>
+                    </pdf:PdfToWordDetailView.RenderTransform>
+                </pdf:PdfToWordDetailView>
             </Grid>
         </NavigationView>
+
+        <!-- Splash Screen Overlay -->
+        <Grid x:Name="SplashOverlay" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.RowSpan="2" Canvas.ZIndex="9999" Loaded="SplashOverlay_Loaded">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="24">
+                <TextBlock x:Name="SplashLogo" Text="Eezy Pro" FontSize="64" FontWeight="Bold" HorizontalAlignment="Center" Opacity="0">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform x:Name="SplashLogoTransform" Y="20"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <ProgressRing IsActive="True" Width="32" Height="32" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

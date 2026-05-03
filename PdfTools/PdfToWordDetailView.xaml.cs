@@ -121,4 +121,6 @@ public sealed partial class PdfToWordDetailView : UserControl
         < 1073741824   => $"{bytes / 1048576.0:F1} MB",
         _              => $"{bytes / 1073741824.0:F2} GB",
     };
+
+    public Visibility BoolToVis(bool value) => value ? Visibility.Visible : Visibility.Collapsed;
 }

@@ -1,5 +1,6 @@
 using ConversionApp.ViewModels;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media.Animation;
 
 namespace ConversionApp;
 
@@ -36,7 +37,9 @@ public sealed partial class MainWindow : Window
 
         var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hwnd);
         var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-        appWindow.Resize(new Windows.Graphics.SizeInt32(920, 720));
+        appWindow.SetPresenter(Microsoft.UI.Windowing.AppWindowPresenterKind.Overlapped);
+        var overlapped = appWindow.Presenter as Microsoft.UI.Windowing.OverlappedPresenter;
+        overlapped?.Maximize();
 
         // --- Auto-scroll log when new messages arrive ---
         ViewModel.LogMessages.CollectionChanged += (sender, e) =>
@@ -51,60 +54,189 @@ public sealed partial class MainWindow : Window
             }
         };
 
-        // Initialize default backdrop (Mica Alt)
-        SetBackdrop(1);
+        // Initialize default backdrop (Max Mica - BaseAlt)
+        this.SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop() { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt };
+
+        // Ensure NavView selects the first item (Home) when starting up
+        NavView.Loaded += (s, e) =>
+        {
+            if (NavView.MenuItems.Count > 0)
+            {
+                NavView.SelectedItem = NavView.MenuItems[0];
+            }
+            // Seed the current view tracker so the first real navigation animates out correctly.
+            _currentView = DashboardView;
+        };
     }
 
-    private void BackdropComboBox_SelectionChanged(object sender, Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs e)
+    private void BackdropSlider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
     {
-        if (BackdropComboBox != null)
+        // 0 = Solid, 1 = Mica, 2 = Mica Alt, 3 = Acrylic
+        switch (e.NewValue)
         {
-            SetBackdrop(BackdropComboBox.SelectedIndex);
-        }
-    }
-
-    private void SetBackdrop(int index)
-    {
-        switch (index)
-        {
-            case 0: // Mica (Default)
+            case 0:
+                this.SystemBackdrop = null;
+                break;
+            case 1:
                 this.SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop() { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base };
                 break;
-            case 1: // Mica (Alt - High Tint)
+            case 2:
                 this.SystemBackdrop = new Microsoft.UI.Xaml.Media.MicaBackdrop() { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt };
                 break;
-            case 2: // Acrylic (Glassy)
+            case 3:
                 this.SystemBackdrop = new Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop();
                 break;
         }
+
+        if (MicaOverlay != null)
+        {
+            MicaOverlay.Visibility = Visibility.Collapsed;
+        }
+    }
+
+    // Tracks which view is currently shown so the out-animation knows what to collapse.
+    private UIElement? _currentView = null;
+    // Guard: prevent re-entrant navigation while an out-animation is running.
+    private bool _isAnimating = false;
+
+    /// <summary>
+    /// Animates the current view out (CubicEase, 250 ms), then animates <paramref name="inView"/> in
+    /// (BackEase bounce, 400 ms). Each call creates brand-new Storyboard instances so there is
+    /// no shared-state / SetTarget-on-running-storyboard crash.
+    /// </summary>
+    private void NavigateTo(UIElement inView, System.Action? onBeforeIn = null)
+    {
+        if (_isAnimating || inView == _currentView) return;
+
+        var leaving = _currentView;
+        _currentView = inView;
+
+        if (leaving != null && leaving.Visibility == Visibility.Visible)
+        {
+            _isAnimating = true;
+            var animOut = BuildAnimateOut(leaving);
+            animOut.Completed += (s, e) =>
+            {
+                leaving.Visibility = Visibility.Collapsed;
+                _isAnimating = false;
+                onBeforeIn?.Invoke();
+                BuildAnimateIn(inView).Begin();
+            };
+            animOut.Begin();
+        }
+        else
+        {
+            onBeforeIn?.Invoke();
+            BuildAnimateIn(inView).Begin();
+        }
+    }
+
+    /// <summary>Creates a fresh AnimateIn storyboard targeting <paramref name="view"/>.</summary>
+    private Storyboard BuildAnimateIn(UIElement view)
+    {
+        view.Visibility = Visibility.Visible;
+        var ease = new BackEase { Amplitude = 0.3, EasingMode = EasingMode.EaseOut };
+        var dur = new Duration(TimeSpan.FromMilliseconds(400));
+        var sb = new Storyboard();
+
+        var opacity = new DoubleAnimation { From = 0, To = 1, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(opacity, view);
+        Storyboard.SetTargetProperty(opacity, "Opacity");
+
+        var ty = new DoubleAnimation { From = 40, To = 0, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(ty, view);
+        Storyboard.SetTargetProperty(ty, "(UIElement.RenderTransform).(CompositeTransform.TranslateY)");
+
+        var sx = new DoubleAnimation { From = 0.95, To = 1, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(sx, view);
+        Storyboard.SetTargetProperty(sx, "(UIElement.RenderTransform).(CompositeTransform.ScaleX)");
+
+        var sy = new DoubleAnimation { From = 0.95, To = 1, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(sy, view);
+        Storyboard.SetTargetProperty(sy, "(UIElement.RenderTransform).(CompositeTransform.ScaleY)");
+
+        sb.Children.Add(opacity);
+        sb.Children.Add(ty);
+        sb.Children.Add(sx);
+        sb.Children.Add(sy);
+        return sb;
+    }
+
+    /// <summary>Creates a fresh AnimateOut storyboard targeting <paramref name="view"/>.</summary>
+    private Storyboard BuildAnimateOut(UIElement view)
+    {
+        var ease = new CubicEase { EasingMode = EasingMode.EaseIn };
+        var dur = new Duration(TimeSpan.FromMilliseconds(250));
+        var sb = new Storyboard();
+
+        var opacity = new DoubleAnimation { From = 1, To = 0, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(opacity, view);
+        Storyboard.SetTargetProperty(opacity, "Opacity");
+
+        var ty = new DoubleAnimation { From = 0, To = -40, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(ty, view);
+        Storyboard.SetTargetProperty(ty, "(UIElement.RenderTransform).(CompositeTransform.TranslateY)");
+
+        var sx = new DoubleAnimation { From = 1, To = 0.95, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(sx, view);
+        Storyboard.SetTargetProperty(sx, "(UIElement.RenderTransform).(CompositeTransform.ScaleX)");
+
+        var sy = new DoubleAnimation { From = 1, To = 0.95, Duration = dur, EasingFunction = ease };
+        Storyboard.SetTarget(sy, view);
+        Storyboard.SetTargetProperty(sy, "(UIElement.RenderTransform).(CompositeTransform.ScaleY)");
+
+        sb.Children.Add(opacity);
+        sb.Children.Add(ty);
+        sb.Children.Add(sx);
+        sb.Children.Add(sy);
+        return sb;
     }
 
     private void NavView_ItemInvoked(
         Microsoft.UI.Xaml.Controls.NavigationView sender,
         Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
     {
-        HideAllViews();
-
         if (args.IsSettingsInvoked)
         {
-            SettingsView.Visibility = Visibility.Visible;
+            NavigateTo(SettingsView);
         }
         else if (args.InvokedItemContainer?.Tag is string tag)
         {
             switch (tag)
             {
                 case "PdfTools":
-                    PdfToolsView.Visibility = Visibility.Visible;
-                    PdfToolsView.RefreshCards();
+                    NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
+                    break;
+                case "BatchConverter":
+                    NavigateTo(BatchConverterView);
                     break;
                 default:
-                    HomeView.Visibility = Visibility.Visible;
+                    NavigateTo(DashboardView);
                     break;
             }
         }
         else
         {
-            HomeView.Visibility = Visibility.Visible;
+            NavigateTo(DashboardView);
+        }
+    }
+
+    private void DashboardCard_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement element && element.Tag is string tag)
+        {
+            foreach (var item in NavView.MenuItems)
+            {
+                if (item is Microsoft.UI.Xaml.Controls.NavigationViewItem navItem && navItem.Tag as string == tag)
+                {
+                    NavView.SelectedItem = navItem;
+                    if (tag == "BatchConverter")
+                        NavigateTo(BatchConverterView);
+                    else if (tag == "PdfTools")
+                        NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
+                    break;
+                }
+            }
         }
     }
 
@@ -116,62 +248,47 @@ public sealed partial class MainWindow : Window
         switch (toolName)
         {
             case "Word to PDF":
-                HideAllViews();
                 WordToPdfDetailView.Initialize(
                     WinRT.Interop.WindowNative.GetWindowHandle(this),
                     DispatcherQueue);
-                WordToPdfDetailView.Visibility = Visibility.Visible;
+                NavigateTo(WordToPdfDetailView);
                 break;
 
             case "Excel to PDF":
-                HideAllViews();
                 ExcelToPdfDetailView.Initialize(
                     WinRT.Interop.WindowNative.GetWindowHandle(this),
                     DispatcherQueue);
-                ExcelToPdfDetailView.Visibility = Visibility.Visible;
+                NavigateTo(ExcelToPdfDetailView);
                 break;
 
             case "PDF to Word":
-                HideAllViews();
                 PdfToWordDetailView.Initialize(
                     WinRT.Interop.WindowNative.GetWindowHandle(this),
                     DispatcherQueue);
-                PdfToWordDetailView.Visibility = Visibility.Visible;
+                NavigateTo(PdfToWordDetailView);
                 break;
         }
     }
 
-    /// <summary>Returns from the Word-to-PDF view back to the dashboard.</summary>
+    /// <summary>Returns from the Word-to-PDF view back to the PDF tools list.</summary>
     private void WordToPdfDetailView_BackRequested()
-    {
-        HideAllViews();
-        PdfToolsView.Visibility = Visibility.Visible;
-        PdfToolsView.RefreshCards();
-    }
+        => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
 
-    /// <summary>Returns from the Excel-to-PDF view back to the dashboard.</summary>
+    /// <summary>Returns from the Excel-to-PDF view back to the PDF tools list.</summary>
     private void ExcelToPdfDetailView_BackRequested()
-    {
-        HideAllViews();
-        PdfToolsView.Visibility = Visibility.Visible;
-        PdfToolsView.RefreshCards();
-    }
+        => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
 
-    /// <summary>Returns from the PDF-to-Word view back to the dashboard.</summary>
+    /// <summary>Returns from the PDF-to-Word view back to the PDF tools list.</summary>
     private void PdfToWordDetailView_BackRequested()
+        => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
+
+    private void SplashOverlay_Loaded(object sender, RoutedEventArgs e)
     {
-        HideAllViews();
-        PdfToolsView.Visibility = Visibility.Visible;
-        PdfToolsView.RefreshCards();
+        SplashStoryboard.Begin();
     }
 
-    private void HideAllViews()
+    private void SplashStoryboard_Completed(object sender, object e)
     {
-        HomeView.Visibility              = Visibility.Collapsed;
-        PdfToolsView.Visibility          = Visibility.Collapsed;
-        SettingsView.Visibility          = Visibility.Collapsed;
-        WordToPdfDetailView.Visibility   = Visibility.Collapsed;
-        ExcelToPdfDetailView.Visibility  = Visibility.Collapsed;
-        PdfToWordDetailView.Visibility   = Visibility.Collapsed;
+        SplashOverlay.Visibility = Visibility.Collapsed;
     }
 }

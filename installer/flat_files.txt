@@ -1,0 +1,789 @@
+﻿      <Component Id="C_clretwrc_dll" Guid="25F1EED7-898B-44EB-AD39-A424987C309F">
+        <File Source="..\publish\win-x64\clretwrc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_clrgc_dll" Guid="B04DE0D6-8C66-4BF4-96D2-16A96AA20E6D">
+        <File Source="..\publish\win-x64\clrgc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_clrjit_dll" Guid="A732F72B-CD32-4AEA-B3C8-F009BB430D9D">
+        <File Source="..\publish\win-x64\clrjit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_CommunityToolkit_Mvvm_dll" Guid="1F6F81D8-F863-4C43-B876-C3DA0AA99C60">
+        <File Source="..\publish\win-x64\CommunityToolkit.Mvvm.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_ConversionApp_deps_json" Guid="820FBDFA-6F7D-4469-8E0E-9037B04DAD05">
+        <File Source="..\publish\win-x64\ConversionApp.deps.json" KeyPath="yes" />
+      </Component>
+      <Component Id="C_ConversionApp_dll" Guid="57B1B922-0D4B-48EB-85C7-C7FC8A49B58A">
+        <File Source="..\publish\win-x64\ConversionApp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_ConversionApp_exe" Guid="95F12282-30C9-4C2A-9421-E49681B94A36">
+        <File Source="..\publish\win-x64\ConversionApp.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="C_ConversionApp_pdb" Guid="AB7A27E5-CD78-4C70-A439-2F063AB850D8">
+        <File Source="..\publish\win-x64\ConversionApp.pdb" KeyPath="yes" />
+      </Component>
+      <Component Id="C_ConversionApp_runtimeconfig_json" Guid="6E5CCE9E-A97E-48BA-A6B0-A5106825A5AE">
+        <File Source="..\publish\win-x64\ConversionApp.runtimeconfig.json" KeyPath="yes" />
+      </Component>
+      <Component Id="C_coreclr_dll" Guid="7A06D8F8-95AE-464A-B661-360C1191E3E5">
+        <File Source="..\publish\win-x64\coreclr.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_CoreMessagingXP_dll" Guid="77D92A85-9A82-4EC4-A673-1E2EFAE95958">
+        <File Source="..\publish\win-x64\CoreMessagingXP.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_createdump_exe" Guid="BA35292C-D879-4617-8F49-7374A9E4EA20">
+        <File Source="..\publish\win-x64\createdump.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="C_dcompi_dll" Guid="3A51C98C-83A3-4DD0-89DE-928F5D9FE781">
+        <File Source="..\publish\win-x64\dcompi.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_DocumentFormat_OpenXml_dll" Guid="0602E8CF-C963-4AF8-9E8B-FB793590FBC1">
+        <File Source="..\publish\win-x64\DocumentFormat.OpenXml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_DocumentFormat_OpenXml_Framework_dll" Guid="825A8139-27AC-4010-974C-ED486CA82F2A">
+        <File Source="..\publish\win-x64\DocumentFormat.OpenXml.Framework.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_dwmcorei_dll" Guid="AF6D77B5-C03B-40AC-A28C-D2B0FE0ECEC4">
+        <File Source="..\publish\win-x64\dwmcorei.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_DwmSceneI_dll" Guid="1632FA49-C08F-4288-99D9-9913D0924EB5">
+        <File Source="..\publish\win-x64\DwmSceneI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_DWriteCore_dll" Guid="1B8520EB-AA9D-4407-8008-F5853860F8BA">
+        <File Source="..\publish\win-x64\DWriteCore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_hostfxr_dll" Guid="F4BE6DE7-2611-48DD-8F60-C45ADA9BD43E">
+        <File Source="..\publish\win-x64\hostfxr.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_hostpolicy_dll" Guid="1E88E660-4B63-4E82-90C3-8A5D620D048B">
+        <File Source="..\publish\win-x64\hostpolicy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_marshal_dll" Guid="E8E311A1-14A8-4A18-9AC4-E56B4E649A7B">
+        <File Source="..\publish\win-x64\marshal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_CSharp_dll" Guid="3214284A-B1F1-4CC8-A339-B29026F3F61D">
+        <File Source="..\publish\win-x64\Microsoft.CSharp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_DiaSymReader_Native_amd64_dll" Guid="868D7C80-59E1-4D51-8FB8-E8E7148780AB">
+        <File Source="..\publish\win-x64\Microsoft.DiaSymReader.Native.amd64.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_DirectManipulation_dll" Guid="ADD4DCC7-1EB1-4E3C-BE6A-F4C7F11D0D70">
+        <File Source="..\publish\win-x64\Microsoft.DirectManipulation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Foundation_winmd" Guid="7B023B9B-0CF4-4783-A766-B96D39CE77D2">
+        <File Source="..\publish\win-x64\Microsoft.Foundation.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Graphics_Display_dll" Guid="7B53A8D0-CC79-4781-A4B6-DA4AA1D36B39">
+        <File Source="..\publish\win-x64\Microsoft.Graphics.Display.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Graphics_winmd" Guid="1CC908F4-F953-4451-8A0A-4F59803A4ECA">
+        <File Source="..\publish\win-x64\Microsoft.Graphics.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_InputStateManager_dll" Guid="1137582F-DD47-432B-AD7A-864A8D87FF68">
+        <File Source="..\publish\win-x64\Microsoft.InputStateManager.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_InteractiveExperiences_Projection_dll" Guid="641D040E-7B47-481E-9AF0-AF0E235EEED5">
+        <File Source="..\publish\win-x64\Microsoft.InteractiveExperiences.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Internal_FrameworkUdk_dll" Guid="E2D3C5CC-AC9F-4564-8FE4-260AB00F51B4">
+        <File Source="..\publish\win-x64\Microsoft.Internal.FrameworkUdk.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Composition_OSSupport_dll" Guid="092162D7-61B0-4B96-9B80-79A6043E64FA">
+        <File Source="..\publish\win-x64\Microsoft.UI.Composition.OSSupport.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_dll" Guid="5DC4725E-FE92-42F0-9118-F8A4E9802423">
+        <File Source="..\publish\win-x64\Microsoft.UI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Input_dll" Guid="E8B95B43-AF7E-44C1-B643-CB833F84E52C">
+        <File Source="..\publish\win-x64\Microsoft.UI.Input.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Text_winmd" Guid="BFE9A233-ED47-4233-A3E0-8C34047FFC4C">
+        <File Source="..\publish\win-x64\Microsoft.UI.Text.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Windowing_Core_dll" Guid="E1D5EE2D-9BA4-4C07-AE90-C082C62CA765">
+        <File Source="..\publish\win-x64\Microsoft.UI.Windowing.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Windowing_dll" Guid="B8D668D8-7639-454D-8933-A6C19DDF3C99">
+        <File Source="..\publish\win-x64\Microsoft.UI.Windowing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_winmd" Guid="61A5F482-D287-4AC8-9AD3-B5D279D0247F">
+        <File Source="..\publish\win-x64\Microsoft.UI.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Xaml_Controls_dll" Guid="D205E323-F5E9-4F09-9632-582C1185C26D">
+        <File Source="..\publish\win-x64\Microsoft.UI.Xaml.Controls.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Xaml_Controls_pri" Guid="4C6B97F7-DBA8-42F8-B2F7-BB03BD664449">
+        <File Source="..\publish\win-x64\Microsoft.UI.Xaml.Controls.pri" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_ui_xaml_dll" Guid="0E99105E-1316-4ABA-956B-D5FC95AC6BCC">
+        <File Source="..\publish\win-x64\Microsoft.ui.xaml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Xaml_Internal_dll" Guid="CB3E3895-A007-4D85-A060-138483644365">
+        <File Source="..\publish\win-x64\Microsoft.UI.Xaml.Internal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Xaml_Phone_dll" Guid="FA85B994-4459-4136-829B-BB03DF40C889">
+        <File Source="..\publish\win-x64\Microsoft.UI.Xaml.Phone.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_ui_xaml_resources_19h1_dll" Guid="1FB5E029-57A6-4DD2-8CAC-C7E4983F0409">
+        <File Source="..\publish\win-x64\Microsoft.ui.xaml.resources.19h1.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_ui_xaml_resources_common_dll" Guid="42E28169-9E0E-41E5-ABC2-4EEFDB5BF1F7">
+        <File Source="..\publish\win-x64\Microsoft.ui.xaml.resources.common.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_UI_Xaml_winmd" Guid="30DA4D82-3387-416A-8AF6-C22A0CB226DC">
+        <File Source="..\publish\win-x64\Microsoft.UI.Xaml.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_VisualBasic_Core_dll" Guid="6823464A-022A-47F4-8347-C15D5EF98078">
+        <File Source="..\publish\win-x64\Microsoft.VisualBasic.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_VisualBasic_dll" Guid="95D2E2C6-ED09-49DA-A22D-E3582A048072">
+        <File Source="..\publish\win-x64\Microsoft.VisualBasic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Web_WebView2_Core_dll" Guid="BD311E8A-2281-49BD-83B7-7FC632A68DF6">
+        <File Source="..\publish\win-x64\Microsoft.Web.WebView2.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Web_WebView2_Core_winmd" Guid="3624C24E-C823-4DA1-AFA5-C7F728EBC827">
+        <File Source="..\publish\win-x64\Microsoft.Web.WebView2.Core.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Win32_Primitives_dll" Guid="86EB32CD-C84E-48C0-991D-3F4D7EDC4BE2">
+        <File Source="..\publish\win-x64\Microsoft.Win32.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Win32_Registry_dll" Guid="57EF74CB-86B7-4C01-A15A-C220D1F3EA9B">
+        <File Source="..\publish\win-x64\Microsoft.Win32.Registry.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_DynamicDependency_Projection_dll" Guid="145E2FD9-ECED-47F3-B475-4A3B910033DE">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_DynamicDependency_winmd" Guid="03A5D862-A48B-4D1E-98F2-F13B65A3B972">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.DynamicDependency.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_Resources_dll" Guid="83DB3286-ED0A-4C0D-B673-E1196E83200C">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.Resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_Resources_Projection_dll" Guid="5A8BD85B-79AC-4216-A850-A7694EF88BB6">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.Resources.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_Resources_winmd" Guid="57F7C2C5-47C5-4113-9E79-9715D20D0ACC">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.Resources.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_WindowsAppRuntime_Projection_dll" Guid="BB79A1E0-B3B6-461A-90AF-B31ED29AEC8A">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_ApplicationModel_WindowsAppRuntime_winmd" Guid="0980EAAD-1EF5-44E4-8DF3-EE0B8E863560">
+        <File Source="..\publish\win-x64\Microsoft.Windows.ApplicationModel.WindowsAppRuntime.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_AppLifecycle_Projection_dll" Guid="6560A29A-D7F1-428A-90A6-B99E928B9E44">
+        <File Source="..\publish\win-x64\Microsoft.Windows.AppLifecycle.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_AppLifecycle_winmd" Guid="8BFD2FF8-6B5B-49AD-A6BD-C1D297125CF6">
+        <File Source="..\publish\win-x64\Microsoft.Windows.AppLifecycle.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_AppNotifications_Builder_Projection_dll" Guid="4084FB78-2350-459E-A1F4-3299E0A7B709">
+        <File Source="..\publish\win-x64\Microsoft.Windows.AppNotifications.Builder.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_AppNotifications_Builder_winmd" Guid="D4DE648C-CE6D-4B2F-87D8-9C9E10E38C04">
+        <File Source="..\publish\win-x64\Microsoft.Windows.AppNotifications.Builder.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_AppNotifications_Projection_dll" Guid="DBA555E1-180E-4CAD-ADFC-001E63A53B0E">
+        <File Source="..\publish\win-x64\Microsoft.Windows.AppNotifications.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_AppNotifications_winmd" Guid="14772031-C3F7-49D9-9C35-78CDEAAA5131">
+        <File Source="..\publish\win-x64\Microsoft.Windows.AppNotifications.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Management_Deployment_Projection_dll" Guid="FA21D608-5C62-4030-8E8C-23528EE8202F">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Management.Deployment.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Management_Deployment_winmd" Guid="43789B6D-D5AF-4392-807A-2AFDBFFFC5B1">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Management.Deployment.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_PushNotifications_Projection_dll" Guid="1C47E763-6A80-46FF-B79D-81F82A50CD33">
+        <File Source="..\publish\win-x64\Microsoft.Windows.PushNotifications.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_PushNotifications_winmd" Guid="AE0FBAA2-905B-46EB-A0AE-AF3EB26B0A70">
+        <File Source="..\publish\win-x64\Microsoft.Windows.PushNotifications.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_SDK_NET_dll" Guid="9C4D938B-C301-4587-9464-6B4BC08AD1AD">
+        <File Source="..\publish\win-x64\Microsoft.Windows.SDK.NET.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Security_AccessControl_Projection_dll" Guid="83A409A5-9C85-4A0F-AF31-77BEDBD497A2">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Security.AccessControl.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Security_AccessControl_winmd" Guid="B722F42D-B773-4C3C-912D-A7131AD2C2C2">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Security.AccessControl.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_System_Power_Projection_dll" Guid="5507D07A-9B64-4893-B826-7353DFEB9EEC">
+        <File Source="..\publish\win-x64\Microsoft.Windows.System.Power.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_System_Power_winmd" Guid="DDC36F6E-BFDD-4B6F-94DF-FC7B3AB6FBB0">
+        <File Source="..\publish\win-x64\Microsoft.Windows.System.Power.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_System_Projection_dll" Guid="CB8086B0-3A21-4054-AB78-50B5DD4F8BBE">
+        <File Source="..\publish\win-x64\Microsoft.Windows.System.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_System_winmd" Guid="2E79F56F-013A-4DE1-B2BF-87DF70906328">
+        <File Source="..\publish\win-x64\Microsoft.Windows.System.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Widgets_dll" Guid="D21EA183-7AB6-4E81-8B0D-D5535A4B55D3">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Widgets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Widgets_Projection_dll" Guid="BF7C7108-5FF6-45F5-ABF1-F3DDB4529D45">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Widgets.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_Windows_Widgets_winmd" Guid="D5E5699A-0B14-4510-8018-6E0804D71DD1">
+        <File Source="..\publish\win-x64\Microsoft.Windows.Widgets.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_WindowsAppRuntime_Bootstrap_dll" Guid="76450B6B-16E9-4288-9B3B-146885413017">
+        <File Source="..\publish\win-x64\Microsoft.WindowsAppRuntime.Bootstrap.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_WindowsAppRuntime_Bootstrap_Net_dll" Guid="DC2D67D8-BDC8-49A2-BA10-F8133B7C7BF9">
+        <File Source="..\publish\win-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_WindowsAppRuntime_dll" Guid="34F16145-E7C2-4DE0-A816-31264B1069A3">
+        <File Source="..\publish\win-x64\Microsoft.WindowsAppRuntime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_WindowsAppRuntime_Insights_Resource_dll" Guid="9D05FC0D-25E7-48A8-BCCC-912A9AA1D823">
+        <File Source="..\publish\win-x64\Microsoft.WindowsAppRuntime.Insights.Resource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_Microsoft_WinUI_dll" Guid="6546F4DB-4223-4097-8A4F-23598868B58D">
+        <File Source="..\publish\win-x64\Microsoft.WinUI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_MRM_dll" Guid="053085E2-8CAC-4A40-932F-221EB41C8D8B">
+        <File Source="..\publish\win-x64\MRM.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_mscordaccore_dll" Guid="5EF56450-C683-4FC6-AE06-4C3CD97C37B7">
+        <File Source="..\publish\win-x64\mscordaccore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_mscordaccore_amd64_amd64_8_0_2626_16921_dll" Guid="BBCBAA6A-5AAD-4AD9-A8BA-314A0289BB94">
+        <File Source="..\publish\win-x64\mscordaccore_amd64_amd64_8.0.2626.16921.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_mscordbi_dll" Guid="6834B604-1CF4-4398-81B2-8DF1685C300B">
+        <File Source="..\publish\win-x64\mscordbi.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_mscorlib_dll" Guid="B3626F17-20B0-4B60-A52B-B21C6EA385FF">
+        <File Source="..\publish\win-x64\mscorlib.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_mscorrc_dll" Guid="CC96C297-F460-4D20-97CD-76EF8051AB5B">
+        <File Source="..\publish\win-x64\mscorrc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_msquic_dll" Guid="F3CFB0E0-B70F-4CE7-AFC8-7B0276BFB45D">
+        <File Source="..\publish\win-x64\msquic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_netstandard_dll" Guid="FDB8FA14-1A1D-41E1-A7B2-739C63F8F5CE">
+        <File Source="..\publish\win-x64\netstandard.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_PushNotificationsLongRunningTask_ProxyStub_dll" Guid="EB9A9A90-626B-481A-9984-25B97CFE07D4">
+        <File Source="..\publish\win-x64\PushNotificationsLongRunningTask.ProxyStub.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_resources_pri" Guid="2E347BEA-A99B-4BAF-B0D4-1445557D4215">
+        <File Source="..\publish\win-x64\resources.pri" KeyPath="yes" />
+      </Component>
+      <Component Id="C_RestartAgent_exe" Guid="18921710-88C5-44F5-8718-6AE3D72F03A8">
+        <File Source="..\publish\win-x64\RestartAgent.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_AppContext_dll" Guid="21DA276F-F62C-4083-9C8D-DBE05B12F17A">
+        <File Source="..\publish\win-x64\System.AppContext.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Buffers_dll" Guid="FCBD0ECB-824E-44DF-AE35-02DFB2DF4A68">
+        <File Source="..\publish\win-x64\System.Buffers.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Collections_Concurrent_dll" Guid="00DE88F4-984A-4B77-A3FB-BDE553274B72">
+        <File Source="..\publish\win-x64\System.Collections.Concurrent.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Collections_dll" Guid="94E49A21-DC48-4A39-A486-A1A2C9675110">
+        <File Source="..\publish\win-x64\System.Collections.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Collections_Immutable_dll" Guid="6A94B4F4-1EE9-43FA-8602-A0C9B725514B">
+        <File Source="..\publish\win-x64\System.Collections.Immutable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Collections_NonGeneric_dll" Guid="7E543675-7B57-457E-A899-20376D368469">
+        <File Source="..\publish\win-x64\System.Collections.NonGeneric.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Collections_Specialized_dll" Guid="BA44596F-9FCC-4DDC-B00B-AD7B85D4B699">
+        <File Source="..\publish\win-x64\System.Collections.Specialized.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ComponentModel_Annotations_dll" Guid="5058BAE1-D319-4BD1-8C6D-9192703E5FFA">
+        <File Source="..\publish\win-x64\System.ComponentModel.Annotations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ComponentModel_DataAnnotations_dll" Guid="CF914245-6080-4890-A9E9-C9F55150D528">
+        <File Source="..\publish\win-x64\System.ComponentModel.DataAnnotations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ComponentModel_dll" Guid="D02C73BA-3575-4748-A865-E3552215550D">
+        <File Source="..\publish\win-x64\System.ComponentModel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ComponentModel_EventBasedAsync_dll" Guid="248867F9-84FB-4D2D-B5E1-C25F34DADA2D">
+        <File Source="..\publish\win-x64\System.ComponentModel.EventBasedAsync.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ComponentModel_Primitives_dll" Guid="F659AE78-DC5F-488D-88F4-169FE982BF4E">
+        <File Source="..\publish\win-x64\System.ComponentModel.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ComponentModel_TypeConverter_dll" Guid="179E2D97-2826-42FD-9852-B8DE16055CFF">
+        <File Source="..\publish\win-x64\System.ComponentModel.TypeConverter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Configuration_dll" Guid="CA3FD4B4-6BA8-43F5-85FE-EAA3312144CC">
+        <File Source="..\publish\win-x64\System.Configuration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Console_dll" Guid="2D0A6D78-E862-4EDA-BC3D-ADF3940FEB8C">
+        <File Source="..\publish\win-x64\System.Console.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Core_dll" Guid="FB57D0CE-86E5-48BE-A39C-FE9185E63E30">
+        <File Source="..\publish\win-x64\System.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Data_Common_dll" Guid="24A23E55-8647-4CCE-A142-0987A433CA5F">
+        <File Source="..\publish\win-x64\System.Data.Common.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Data_DataSetExtensions_dll" Guid="56CB3EAD-E992-443B-9D03-73DF9E402FD6">
+        <File Source="..\publish\win-x64\System.Data.DataSetExtensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Data_dll" Guid="E43DDF49-1096-4718-8A7D-76023D467289">
+        <File Source="..\publish\win-x64\System.Data.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_Contracts_dll" Guid="ABA09A4D-E551-4354-86BA-8A4B14125A2A">
+        <File Source="..\publish\win-x64\System.Diagnostics.Contracts.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_Debug_dll" Guid="A91112F0-73A8-4264-B051-30A0BD87688D">
+        <File Source="..\publish\win-x64\System.Diagnostics.Debug.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_DiagnosticSource_dll" Guid="9E37DD61-5491-4BE7-85DF-7EF322E5F9D6">
+        <File Source="..\publish\win-x64\System.Diagnostics.DiagnosticSource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_FileVersionInfo_dll" Guid="1F1ADF39-212E-4306-AD2F-373FF1A74EC5">
+        <File Source="..\publish\win-x64\System.Diagnostics.FileVersionInfo.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_Process_dll" Guid="13FB9DFF-86A4-409F-957B-A42A418553BC">
+        <File Source="..\publish\win-x64\System.Diagnostics.Process.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_StackTrace_dll" Guid="CA2285B2-2151-486B-BF92-704E00BD1D2F">
+        <File Source="..\publish\win-x64\System.Diagnostics.StackTrace.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_TextWriterTraceListener_dll" Guid="49A7F0D1-D8CE-4A94-A0EB-08CFF91F756D">
+        <File Source="..\publish\win-x64\System.Diagnostics.TextWriterTraceListener.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_Tools_dll" Guid="8B8E500A-7755-4173-B15F-67EFD607D9C4">
+        <File Source="..\publish\win-x64\System.Diagnostics.Tools.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_TraceSource_dll" Guid="F3CAF11C-7D41-4335-A332-F6198C61C261">
+        <File Source="..\publish\win-x64\System.Diagnostics.TraceSource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Diagnostics_Tracing_dll" Guid="DC3A2709-E8E3-4D21-8420-9BB1DE651FBA">
+        <File Source="..\publish\win-x64\System.Diagnostics.Tracing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_dll" Guid="A826AE47-2202-42D1-8FB1-5F2649098CEC">
+        <File Source="..\publish\win-x64\System.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Drawing_dll" Guid="A9032CFB-D7A3-4993-9BEE-34A01ECF218D">
+        <File Source="..\publish\win-x64\System.Drawing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Drawing_Primitives_dll" Guid="56853FEA-FC58-4B2D-B5B9-C9431AE3ABF6">
+        <File Source="..\publish\win-x64\System.Drawing.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Dynamic_Runtime_dll" Guid="B44C9441-214C-437B-956E-67169B28E9ED">
+        <File Source="..\publish\win-x64\System.Dynamic.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Formats_Asn1_dll" Guid="F5CE42A9-87CF-48F4-AE64-04367824333B">
+        <File Source="..\publish\win-x64\System.Formats.Asn1.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Formats_Tar_dll" Guid="1100B5C6-0126-404B-A03B-D1578FD6E27C">
+        <File Source="..\publish\win-x64\System.Formats.Tar.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Globalization_Calendars_dll" Guid="C4C06D72-CD3C-46C3-BBA8-BA8A631191B9">
+        <File Source="..\publish\win-x64\System.Globalization.Calendars.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Globalization_dll" Guid="CC533081-A0B6-4A25-A376-C2C94C3D0131">
+        <File Source="..\publish\win-x64\System.Globalization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Globalization_Extensions_dll" Guid="5A633DF8-F2B6-4C01-9589-8C11B8463CD0">
+        <File Source="..\publish\win-x64\System.Globalization.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Compression_Brotli_dll" Guid="25461BD1-BAF1-4870-B375-7ECA08F06214">
+        <File Source="..\publish\win-x64\System.IO.Compression.Brotli.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Compression_dll" Guid="456C215D-6D20-4238-8519-63CFC75C64E7">
+        <File Source="..\publish\win-x64\System.IO.Compression.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Compression_FileSystem_dll" Guid="0D496F1E-3AAF-4DF3-BD08-B50386EC108C">
+        <File Source="..\publish\win-x64\System.IO.Compression.FileSystem.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Compression_Native_dll" Guid="1F6FCB8D-3AC5-4E68-ACA1-6E3CB0ECB5F5">
+        <File Source="..\publish\win-x64\System.IO.Compression.Native.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Compression_ZipFile_dll" Guid="1F2CC2EF-F09D-4787-A03E-0002D522CC7E">
+        <File Source="..\publish\win-x64\System.IO.Compression.ZipFile.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_dll" Guid="7AEC1D25-DE6E-4ED3-B736-D9F5B7BB64D9">
+        <File Source="..\publish\win-x64\System.IO.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_FileSystem_AccessControl_dll" Guid="0BFA167A-E0A7-4A4A-AB94-7647B8302920">
+        <File Source="..\publish\win-x64\System.IO.FileSystem.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_FileSystem_dll" Guid="C4708528-B403-475F-B0C9-A96B97E13C41">
+        <File Source="..\publish\win-x64\System.IO.FileSystem.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_FileSystem_DriveInfo_dll" Guid="5FA2F549-CFC3-4093-B7A5-899579D2E968">
+        <File Source="..\publish\win-x64\System.IO.FileSystem.DriveInfo.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_FileSystem_Primitives_dll" Guid="D1D043AD-B469-4705-B644-DC0050B789A8">
+        <File Source="..\publish\win-x64\System.IO.FileSystem.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_FileSystem_Watcher_dll" Guid="E0FB61BA-7B0D-482C-A99A-36B3008E1BED">
+        <File Source="..\publish\win-x64\System.IO.FileSystem.Watcher.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_IsolatedStorage_dll" Guid="FB180792-133A-4185-BC30-6DA442B057E7">
+        <File Source="..\publish\win-x64\System.IO.IsolatedStorage.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_MemoryMappedFiles_dll" Guid="A32B4FA3-F09E-4025-92F2-1223E1563930">
+        <File Source="..\publish\win-x64\System.IO.MemoryMappedFiles.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Packaging_dll" Guid="56EB76B3-5852-4E07-A210-696FFDA9F059">
+        <File Source="..\publish\win-x64\System.IO.Packaging.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Pipes_AccessControl_dll" Guid="73DD90C9-A84A-4CA2-9862-F18F373F111C">
+        <File Source="..\publish\win-x64\System.IO.Pipes.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_Pipes_dll" Guid="FEFCE7CA-24ED-4BBA-9260-07A8727A79B6">
+        <File Source="..\publish\win-x64\System.IO.Pipes.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_IO_UnmanagedMemoryStream_dll" Guid="7B552D10-9952-4AD3-87A4-EFB3DE33909B">
+        <File Source="..\publish\win-x64\System.IO.UnmanagedMemoryStream.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Linq_dll" Guid="F7319395-490E-4C6C-BD49-94638E663AF5">
+        <File Source="..\publish\win-x64\System.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Linq_Expressions_dll" Guid="CC6ACA7D-247D-4DB6-A7B3-510AF44197BB">
+        <File Source="..\publish\win-x64\System.Linq.Expressions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Linq_Parallel_dll" Guid="9F35EB48-F687-485B-9114-7B72AFCB91CF">
+        <File Source="..\publish\win-x64\System.Linq.Parallel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Linq_Queryable_dll" Guid="7625F93E-2C4E-460C-AD39-8AD095DB93F2">
+        <File Source="..\publish\win-x64\System.Linq.Queryable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Memory_dll" Guid="F4832600-8653-49A6-80BD-45DFDB96217D">
+        <File Source="..\publish\win-x64\System.Memory.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_dll" Guid="E96CD510-D894-4B0B-88B6-C7A29FD13FD6">
+        <File Source="..\publish\win-x64\System.Net.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Http_dll" Guid="0AA5999C-B03E-4B57-822C-1FEACA8C7CBF">
+        <File Source="..\publish\win-x64\System.Net.Http.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Http_Json_dll" Guid="B6D22500-0B8B-4288-859C-7A16767FCC1F">
+        <File Source="..\publish\win-x64\System.Net.Http.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_HttpListener_dll" Guid="512043D8-3B9D-419D-802C-7201CF944EE5">
+        <File Source="..\publish\win-x64\System.Net.HttpListener.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Mail_dll" Guid="E761C00F-0CAF-4764-A30C-22C1F2F0509F">
+        <File Source="..\publish\win-x64\System.Net.Mail.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_NameResolution_dll" Guid="DE4D7AF7-18ED-4255-8C17-F0C561C0EBB4">
+        <File Source="..\publish\win-x64\System.Net.NameResolution.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_NetworkInformation_dll" Guid="27E01259-5AA0-487F-99FE-0F96BE20FA44">
+        <File Source="..\publish\win-x64\System.Net.NetworkInformation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Ping_dll" Guid="F2FBE82F-9034-45EE-A261-59A292AD7BB5">
+        <File Source="..\publish\win-x64\System.Net.Ping.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Primitives_dll" Guid="3704202A-AE88-4C44-A4BE-E0A30E20B1FF">
+        <File Source="..\publish\win-x64\System.Net.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Quic_dll" Guid="FE38EC77-E39E-4728-BCCE-E6FE0825FECD">
+        <File Source="..\publish\win-x64\System.Net.Quic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Requests_dll" Guid="F5E21068-87A2-4439-A64D-48165F486EBC">
+        <File Source="..\publish\win-x64\System.Net.Requests.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Security_dll" Guid="954D1AE9-3EE6-45BB-9640-9290759D248B">
+        <File Source="..\publish\win-x64\System.Net.Security.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_ServicePoint_dll" Guid="22268929-969E-4E29-AF08-3FD44269DB23">
+        <File Source="..\publish\win-x64\System.Net.ServicePoint.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_Sockets_dll" Guid="60AABF0E-B828-4E3C-93F6-5DFB22A46C01">
+        <File Source="..\publish\win-x64\System.Net.Sockets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_WebClient_dll" Guid="0268D0F4-8EAE-4D82-9E04-5BE7FCCB2383">
+        <File Source="..\publish\win-x64\System.Net.WebClient.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_WebHeaderCollection_dll" Guid="4E0A5FA5-057F-4393-9E0A-FCA14B1BF05C">
+        <File Source="..\publish\win-x64\System.Net.WebHeaderCollection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_WebProxy_dll" Guid="A224213C-F1A3-4744-8206-6DA7E1F4E0EF">
+        <File Source="..\publish\win-x64\System.Net.WebProxy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_WebSockets_Client_dll" Guid="245DE57A-2EBC-470B-83F7-9BB64367B63A">
+        <File Source="..\publish\win-x64\System.Net.WebSockets.Client.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Net_WebSockets_dll" Guid="E4619D6B-3983-48E3-9018-3F6499B70C93">
+        <File Source="..\publish\win-x64\System.Net.WebSockets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Numerics_dll" Guid="37BC60D0-8089-4D04-88E7-23177B2C1D53">
+        <File Source="..\publish\win-x64\System.Numerics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Numerics_Vectors_dll" Guid="DAA318A3-1029-409B-A50F-ACE4616D84B1">
+        <File Source="..\publish\win-x64\System.Numerics.Vectors.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ObjectModel_dll" Guid="FF376580-0CB6-443A-894D-CF3F121DE06D">
+        <File Source="..\publish\win-x64\System.ObjectModel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Private_CoreLib_dll" Guid="03BBCE01-18EC-4664-A936-EA81FBFFB6FD">
+        <File Source="..\publish\win-x64\System.Private.CoreLib.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Private_DataContractSerialization_dll" Guid="9E929835-598C-4BC3-9AC0-ABE038FC27EB">
+        <File Source="..\publish\win-x64\System.Private.DataContractSerialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Private_Uri_dll" Guid="ABD5A865-034C-4850-8D59-F63028E25985">
+        <File Source="..\publish\win-x64\System.Private.Uri.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Private_Xml_dll" Guid="5B69DC34-B2FB-4425-B6D7-8BADC383FC95">
+        <File Source="..\publish\win-x64\System.Private.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Private_Xml_Linq_dll" Guid="6AB3C2CE-1BB9-4085-BC2F-921ED3CE5254">
+        <File Source="..\publish\win-x64\System.Private.Xml.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_DispatchProxy_dll" Guid="C2444ABA-DE46-4C5D-AB7B-3AFF625AB8CF">
+        <File Source="..\publish\win-x64\System.Reflection.DispatchProxy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_dll" Guid="0D9A6245-0C8A-4199-A145-16A139350F5A">
+        <File Source="..\publish\win-x64\System.Reflection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_Emit_dll" Guid="87D6F16C-531F-446C-AECE-E8A694B4F952">
+        <File Source="..\publish\win-x64\System.Reflection.Emit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_Emit_ILGeneration_dll" Guid="6BC5FCC2-77EA-4AF5-A41D-1901A5013A0F">
+        <File Source="..\publish\win-x64\System.Reflection.Emit.ILGeneration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_Emit_Lightweight_dll" Guid="DCE5C865-E282-4428-BC26-723EB743C6FE">
+        <File Source="..\publish\win-x64\System.Reflection.Emit.Lightweight.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_Extensions_dll" Guid="24C34245-4576-489D-B284-3DF6A1DD6935">
+        <File Source="..\publish\win-x64\System.Reflection.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_Metadata_dll" Guid="67409A68-7CDE-4A5B-8072-35CF39AA1FAC">
+        <File Source="..\publish\win-x64\System.Reflection.Metadata.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_Primitives_dll" Guid="7DE2BA55-A383-4BCA-90F9-438E3709844E">
+        <File Source="..\publish\win-x64\System.Reflection.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Reflection_TypeExtensions_dll" Guid="C86E4D9F-9E9D-42EF-AE95-B008EBD4018F">
+        <File Source="..\publish\win-x64\System.Reflection.TypeExtensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Resources_Reader_dll" Guid="557150A0-042F-4FBD-9328-27262B35AAAD">
+        <File Source="..\publish\win-x64\System.Resources.Reader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Resources_ResourceManager_dll" Guid="A2BB3F29-B751-44F9-8D5F-8D78B2383664">
+        <File Source="..\publish\win-x64\System.Resources.ResourceManager.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Resources_Writer_dll" Guid="7C1D07E3-F60E-42A7-BE2B-30C6F701EA97">
+        <File Source="..\publish\win-x64\System.Resources.Writer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_CompilerServices_Unsafe_dll" Guid="97985F0F-B6A7-4BBB-9771-DDCB2A91BBFB">
+        <File Source="..\publish\win-x64\System.Runtime.CompilerServices.Unsafe.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_CompilerServices_VisualC_dll" Guid="BBE7AFD3-8C85-4D48-9864-8548D05DD984">
+        <File Source="..\publish\win-x64\System.Runtime.CompilerServices.VisualC.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_dll" Guid="F2933344-8D52-4D32-984A-F0397A1757D3">
+        <File Source="..\publish\win-x64\System.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Extensions_dll" Guid="D894CE09-0ADE-4EB5-ADF7-E7DBFEF9AE1D">
+        <File Source="..\publish\win-x64\System.Runtime.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Handles_dll" Guid="250D2A42-7A92-44B8-80DE-56642C34A573">
+        <File Source="..\publish\win-x64\System.Runtime.Handles.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_InteropServices_dll" Guid="602C19CB-9B50-4D2C-9B46-5EEA25727D64">
+        <File Source="..\publish\win-x64\System.Runtime.InteropServices.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_InteropServices_JavaScript_dll" Guid="6056E8CC-DC88-4163-BECA-95CB1EDF447B">
+        <File Source="..\publish\win-x64\System.Runtime.InteropServices.JavaScript.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_InteropServices_RuntimeInformation_dll" Guid="E8FC863A-DB57-4AFF-88A6-D4D5A90268DB">
+        <File Source="..\publish\win-x64\System.Runtime.InteropServices.RuntimeInformation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Intrinsics_dll" Guid="4B3293AF-0252-43B9-B2E5-CF60465345EC">
+        <File Source="..\publish\win-x64\System.Runtime.Intrinsics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Loader_dll" Guid="52C972EC-D875-4E93-858C-2FFF419429D3">
+        <File Source="..\publish\win-x64\System.Runtime.Loader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Numerics_dll" Guid="6EE94E95-FDAE-4D05-9EEA-68170A7D97CF">
+        <File Source="..\publish\win-x64\System.Runtime.Numerics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Serialization_dll" Guid="965AA108-F28D-47C3-AE01-6A1C2D4F8863">
+        <File Source="..\publish\win-x64\System.Runtime.Serialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Serialization_Formatters_dll" Guid="6E7E98E9-854C-463C-B7D8-8916116636EF">
+        <File Source="..\publish\win-x64\System.Runtime.Serialization.Formatters.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Serialization_Json_dll" Guid="AE41F584-4FC0-461A-B504-9210BA92A8B1">
+        <File Source="..\publish\win-x64\System.Runtime.Serialization.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Serialization_Primitives_dll" Guid="C6600A26-D604-401A-B884-FE1C75134122">
+        <File Source="..\publish\win-x64\System.Runtime.Serialization.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Runtime_Serialization_Xml_dll" Guid="C341FD40-7B2A-4E4A-A0B1-8EEBE34F8954">
+        <File Source="..\publish\win-x64\System.Runtime.Serialization.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_AccessControl_dll" Guid="B37AF01C-B369-4BC6-AD2F-DADFCF8DF0FE">
+        <File Source="..\publish\win-x64\System.Security.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Claims_dll" Guid="16F86171-32C0-4446-BC3A-7AC44F4A67D4">
+        <File Source="..\publish\win-x64\System.Security.Claims.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_Algorithms_dll" Guid="81DD56B9-E1AD-4018-B245-73E71B7305F3">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.Algorithms.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_Cng_dll" Guid="D8612A60-0E23-4A84-9E43-D10C5CD20D6F">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.Cng.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_Csp_dll" Guid="38F273B8-11B8-433F-8DB5-734797C7D588">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.Csp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_dll" Guid="60592AEF-B92F-4BD0-BEED-D4E409A5E26D">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_Encoding_dll" Guid="DF610908-B7F5-4F8D-A8A6-A808ABA8D551">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.Encoding.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_OpenSsl_dll" Guid="DD60E241-5315-40B0-BCC7-0AAAC2550A4D">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.OpenSsl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_Primitives_dll" Guid="09EB22A7-0BBF-4221-9A01-CEB0A4FAA1DF">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Cryptography_X509Certificates_dll" Guid="D773B327-B9EA-458A-BDA6-6E74CAFA8E35">
+        <File Source="..\publish\win-x64\System.Security.Cryptography.X509Certificates.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_dll" Guid="F29881C0-D36C-4B82-A38E-7D14FEA6E1C9">
+        <File Source="..\publish\win-x64\System.Security.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Principal_dll" Guid="EB6BB295-1C7F-4FEB-828B-1B749E20198D">
+        <File Source="..\publish\win-x64\System.Security.Principal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_Principal_Windows_dll" Guid="9C22884F-6C46-47DD-9E23-F781BADCC18F">
+        <File Source="..\publish\win-x64\System.Security.Principal.Windows.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Security_SecureString_dll" Guid="FF9B221A-4CD9-45AE-9AA0-D618A301E094">
+        <File Source="..\publish\win-x64\System.Security.SecureString.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ServiceModel_Web_dll" Guid="D7E29DE6-F9D5-4546-828A-A79BE98B9F95">
+        <File Source="..\publish\win-x64\System.ServiceModel.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ServiceProcess_dll" Guid="47240A06-C438-40F6-B267-BE13F9AD9C6A">
+        <File Source="..\publish\win-x64\System.ServiceProcess.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Text_Encoding_CodePages_dll" Guid="19055C2F-AA3F-42BC-9DAC-A5FD2146B3FB">
+        <File Source="..\publish\win-x64\System.Text.Encoding.CodePages.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Text_Encoding_dll" Guid="9D9BCD04-4A6E-41E8-AF67-BC78C9A12854">
+        <File Source="..\publish\win-x64\System.Text.Encoding.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Text_Encoding_Extensions_dll" Guid="0A7ADE0D-5186-46A6-8A09-E3B22E2B18AB">
+        <File Source="..\publish\win-x64\System.Text.Encoding.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Text_Encodings_Web_dll" Guid="42365BA4-032B-4B81-A840-EBE239675F4F">
+        <File Source="..\publish\win-x64\System.Text.Encodings.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Text_Json_dll" Guid="5DBFAB2A-11B4-42E9-997E-7C42BC1716D5">
+        <File Source="..\publish\win-x64\System.Text.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Text_RegularExpressions_dll" Guid="0D1E6164-8041-4BB6-97E8-7EA5C463DB37">
+        <File Source="..\publish\win-x64\System.Text.RegularExpressions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Channels_dll" Guid="AB345487-C8A9-48FB-A54B-00F4AAFD384E">
+        <File Source="..\publish\win-x64\System.Threading.Channels.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_dll" Guid="28707A06-1507-482C-9129-261B09C77C03">
+        <File Source="..\publish\win-x64\System.Threading.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Overlapped_dll" Guid="C8E65AC9-110B-4372-BD41-5EC71CB53981">
+        <File Source="..\publish\win-x64\System.Threading.Overlapped.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Tasks_Dataflow_dll" Guid="D54B093E-9D3B-4CA9-A3DC-9772E51C36C2">
+        <File Source="..\publish\win-x64\System.Threading.Tasks.Dataflow.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Tasks_dll" Guid="EB47D569-7F4C-41BF-BABA-18D3EF14E4C4">
+        <File Source="..\publish\win-x64\System.Threading.Tasks.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Tasks_Extensions_dll" Guid="B90FEA97-9661-49C0-951E-11EF982E7F74">
+        <File Source="..\publish\win-x64\System.Threading.Tasks.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Tasks_Parallel_dll" Guid="C0548D7B-9BDF-4048-B6DF-A0516DE1FA6C">
+        <File Source="..\publish\win-x64\System.Threading.Tasks.Parallel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Thread_dll" Guid="F229B299-BDB3-40C4-A7BE-3CBB829AE539">
+        <File Source="..\publish\win-x64\System.Threading.Thread.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_ThreadPool_dll" Guid="382458C9-2F0E-4892-B676-43334E3A4A96">
+        <File Source="..\publish\win-x64\System.Threading.ThreadPool.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Threading_Timer_dll" Guid="EC0D3C20-E2D6-419A-B351-CD1DF69D3FC3">
+        <File Source="..\publish\win-x64\System.Threading.Timer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Transactions_dll" Guid="B707E8B8-DC26-4470-AEF2-97F104086130">
+        <File Source="..\publish\win-x64\System.Transactions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Transactions_Local_dll" Guid="07ACAFDD-6AD2-450E-AEAB-25806BAE2D8B">
+        <File Source="..\publish\win-x64\System.Transactions.Local.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_ValueTuple_dll" Guid="BBEC5825-935B-4403-A4ED-D580DF3DE0A8">
+        <File Source="..\publish\win-x64\System.ValueTuple.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Web_dll" Guid="6CD464DA-61D8-40DC-BE4C-A628A8CE56FE">
+        <File Source="..\publish\win-x64\System.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Web_HttpUtility_dll" Guid="EC412F2C-8CC2-406F-BC75-C93A4A87EF95">
+        <File Source="..\publish\win-x64\System.Web.HttpUtility.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Windows_dll" Guid="85CEE680-FC14-44C5-9EFD-6A64165F6778">
+        <File Source="..\publish\win-x64\System.Windows.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_dll" Guid="86BA7646-935C-4779-9F54-9DE244BED41F">
+        <File Source="..\publish\win-x64\System.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_Linq_dll" Guid="41A6BCD9-15BE-4AD2-9BBA-B0BE8AA07A85">
+        <File Source="..\publish\win-x64\System.Xml.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_ReaderWriter_dll" Guid="74FBED69-9ED1-4F56-8B62-00037CC5F202">
+        <File Source="..\publish\win-x64\System.Xml.ReaderWriter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_Serialization_dll" Guid="3DBFE7EA-CD27-4669-A200-5FEFAEF7F09D">
+        <File Source="..\publish\win-x64\System.Xml.Serialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_XDocument_dll" Guid="A54ECC19-2416-4324-ADDC-15A71E064317">
+        <File Source="..\publish\win-x64\System.Xml.XDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_XmlDocument_dll" Guid="8A358DB5-B700-4C96-90D5-D98214ADBFA9">
+        <File Source="..\publish\win-x64\System.Xml.XmlDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_XmlSerializer_dll" Guid="43C18AAE-F157-4658-B85D-ACFCF4CE45D1">
+        <File Source="..\publish\win-x64\System.Xml.XmlSerializer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_XPath_dll" Guid="191DF8B6-9D8B-43CE-9CA2-7BD8C8334E1F">
+        <File Source="..\publish\win-x64\System.Xml.XPath.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_System_Xml_XPath_XDocument_dll" Guid="7CD16FD1-853A-4060-A595-654F4212F06E">
+        <File Source="..\publish\win-x64\System.Xml.XPath.XDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_WindowsAppRuntime_png" Guid="621A87C9-AF66-4D59-82C5-A5A7557FE60D">
+        <File Source="..\publish\win-x64\WindowsAppRuntime.png" KeyPath="yes" />
+      </Component>
+      <Component Id="C_WindowsAppSdk_AppxDeploymentExtensions_Desktop_EventLog_Instrumentation_dll" Guid="6C7238A3-FD85-4B40-A617-1142CD309594">
+        <File Source="..\publish\win-x64\WindowsAppSdk.AppxDeploymentExtensions.Desktop-EventLog-Instrumentation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_WindowsAppSdk_AppxDeploymentExtensions_Desktop_dll" Guid="119A66BE-2B0D-4248-B261-57BAD9A42E13">
+        <File Source="..\publish\win-x64\WindowsAppSdk.AppxDeploymentExtensions.Desktop.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_WindowsBase_dll" Guid="9C630FE8-0F90-4C90-BB71-D580F242B1BA">
+        <File Source="..\publish\win-x64\WindowsBase.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_WinRT_Runtime_dll" Guid="11CD9FDC-57D2-4E15-8A86-3AD9A85D913D">
+        <File Source="..\publish\win-x64\WinRT.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_WinUIEdit_dll" Guid="DC89C2CA-0BBD-4F5D-9CA8-1E345918FCB9">
+        <File Source="..\publish\win-x64\WinUIEdit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="C_wuceffectsi_dll" Guid="8F148F31-0819-4686-B03A-1AA299FE8918">
+        <File Source="..\publish\win-x64\wuceffectsi.dll" KeyPath="yes" />
+      </Component>

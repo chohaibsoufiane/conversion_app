@@ -1,0 +1,12 @@
+System.Runtime.InteropServices.COMException (0x800F1000): No installed components were detected.
+
+Operation is not valid on an active Animation or Storyboard.  Root Storyboard must be stopped first.
+   at WinRT.ExceptionHelpers.<ThrowExceptionForHR>g__Throw|38_0(Int32 hr)
+   at ABI.Microsoft.UI.Xaml.Media.Animation.IStoryboardStaticsMethods.SetTarget(IObjectReference _obj, Timeline timeline, DependencyObject target)
+   at Microsoft.UI.Xaml.Media.Animation.Storyboard.SetTarget(Timeline timeline, DependencyObject target)
+   at ConversionApp.MainWindow.AnimateIn(UIElement view) in E:\Everything_Else\projects\conversion_app\MainWindow.xaml.cs:line 132
+   at ConversionApp.MainWindow.NavigateTo(UIElement inView, Action onBeforeIn) in E:\Everything_Else\projects\conversion_app\MainWindow.xaml.cs:line 125
+   at ConversionApp.MainWindow.NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) in E:\Everything_Else\projects\conversion_app\MainWindow.xaml.cs:line 142
+   at WinRT._EventSource_global__Windows_Foundation_TypedEventHandler_global__Microsoft_UI_Xaml_Controls_NavigationView__global__Microsoft_UI_Xaml_Controls_NavigationViewItemInvokedEventArgs_.EventState.<GetEventInvoke>b__1_0(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+   at ABI.Windows.Foundation.TypedEventHandler`2.Do_Abi_Invoke[TSenderAbi,TResultAbi](Void* thisPtr, TSenderAbi sender, TResultAbi args)
+Operation is not valid on an active Animation or Storyboard.  Root Storyboard must be stopped first.

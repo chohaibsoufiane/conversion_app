@@ -65,7 +65,8 @@
                                        MinItemHeight="180"
                                        MinRowSpacing="16"
                                        MinColumnSpacing="16"
-                                       ItemsStretch="Fill"/>
+                                       ItemsStretch="None"
+                                       ItemsJustification="Center"/>
                 </ItemsRepeater.Layout>
 
                 <ItemsRepeater.ItemTemplate>

@@ -13,6 +13,11 @@ public partial class App : Application
     public App()
     {
         this.InitializeComponent();
+        this.UnhandledException += (s, e) => 
+        {
+            System.IO.File.WriteAllText("crash.txt", e.Exception.ToString() + "\n" + e.Message);
+            e.Handled = true;
+        };
     }
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
