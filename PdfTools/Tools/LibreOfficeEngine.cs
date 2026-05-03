@@ -197,14 +197,17 @@ public sealed class LibreOfficeEngine : IDocumentTool
     {
         var possiblePaths = new[]
         {
+            @"_copies_\LibreOfficePortable\App\libreoffice\program\soffice.exe",
             @"_copies_\LibreOfficePortable\LibreOfficePortable.exe",
             @"_copies_\LibreOffice\LibreOfficePortable.exe",
             @"_copies_\LibreOffice\program\soffice.exe",
             @"_copies_\program\soffice.exe"
         };
 
-        // Start from the executable's directory and walk upward
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        // Start from the executable's directory and walk upward.
+        // We use Environment.ProcessPath to handle single-file deployments correctly.
+        var basePath = Path.GetDirectoryName(Environment.ProcessPath) ?? AppContext.BaseDirectory;
+        var dir = new DirectoryInfo(basePath);
 
         while (dir is not null)
         {

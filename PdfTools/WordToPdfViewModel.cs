@@ -133,6 +133,11 @@ public partial class WordToPdfViewModel : ObservableObject
             var result = await Task.Run(() => engine.Execute(request));
 
 
+            if (result.IsSuccess)
+            {
+                Services.HistoryService.Instance.AddItem(OutputFilePath, "Word to PDF", "\uEA90");
+            }
+
             _dispatcherQueue.TryEnqueue(() =>
             {
                 StatusText   = result.Message;

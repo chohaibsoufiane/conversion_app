@@ -134,13 +134,15 @@ public sealed class PdfToWordEngine : IDocumentTool
     {
         var possiblePaths = new[]
         {
+            @"_copies_\LibreOfficePortable\App\libreoffice\program\soffice.exe",
             @"_copies_\LibreOfficePortable\LibreOfficePortable.exe",
             @"_copies_\LibreOffice\LibreOfficePortable.exe",
             @"_copies_\LibreOffice\program\soffice.exe",
             @"_copies_\program\soffice.exe"
         };
 
-        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        var basePath = Path.GetDirectoryName(Environment.ProcessPath) ?? AppContext.BaseDirectory;
+        var dir = new DirectoryInfo(basePath);
         while (dir is not null)
         {
             var dirNameLower = dir.FullName.ToLowerInvariant();

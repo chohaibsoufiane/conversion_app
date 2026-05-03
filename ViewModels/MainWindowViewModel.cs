@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ConversionApp.Models;
 using ConversionApp.Services;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
@@ -30,6 +31,8 @@ public partial class MainWindowViewModel : ObservableObject
     private string _outputDirectory = string.Empty;
 
     public ObservableCollection<string> LogMessages { get; } = new();
+
+    public ObservableCollection<ConversionHistoryItem> HistoryItems => HistoryService.Instance.Items;
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(StartConversionCommand))]
@@ -160,6 +163,23 @@ public partial class MainWindowViewModel : ObservableObject
         {
             IsProcessing = false;
         }
+    }
+
+    [RelayCommand]
+    private void OpenFile(ConversionHistoryItem? item)
+    {
+        if (item == null || !File.Exists(item.FilePath)) return;
+
+        try
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = item.FilePath,
+                UseShellExecute = true
+            };
+            System.Diagnostics.Process.Start(psi);
+        }
+        catch { /* Ignore open errors */ }
     }
 
     private bool CanStartConversion() =>

@@ -291,4 +291,9 @@ public sealed partial class MainWindow : Window
     {
         SplashOverlay.Visibility = Visibility.Collapsed;
     }
+
+    private void HistoryControl_ItemClick(object sender, Models.ConversionHistoryItem item)
+    {
+        ViewModel.OpenFileCommand.Execute(item);
+    }
 }

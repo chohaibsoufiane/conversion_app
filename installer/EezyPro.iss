@@ -2,7 +2,8 @@
 AppName=Eezy Pro
 AppVersion=1.0
 AppPublisher=Eezy Pro
-DefaultDirName={autopf}\Eezy Pro
+DefaultDirName={userappdata}\Eezy Pro
+PrivilegesRequired=lowest
 DefaultGroupName=Eezy Pro
 UninstallDisplayIcon={app}\ConversionApp.exe
 OutputDir=out
