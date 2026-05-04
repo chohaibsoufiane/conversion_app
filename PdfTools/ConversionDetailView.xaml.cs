@@ -50,6 +50,12 @@ public sealed partial class ConversionDetailView : UserControl
                 picker.FileTypeFilter.Add(".xlsx");
                 picker.FileTypeFilter.Add(".xls");
                 break;
+            case Models.ConversionType.ImageToPdf:
+                picker.FileTypeFilter.Add(".jpg");
+                picker.FileTypeFilter.Add(".jpeg");
+                picker.FileTypeFilter.Add(".png");
+                picker.FileTypeFilter.Add(".bmp");
+                break;
         }
         
         WinRT.Interop.InitializeWithWindow.Initialize(picker, _windowHandle);
@@ -93,6 +99,7 @@ public sealed partial class ConversionDetailView : UserControl
             Models.ConversionType.PdfToWord => ".docx",
             Models.ConversionType.ExcelToPdf => ".pdf",
             Models.ConversionType.PdfToExcel => ".xlsx",
+            Models.ConversionType.ImageToPdf => ".pdf",
             _ => ".pdf"
         };
         
@@ -120,6 +127,15 @@ public sealed partial class ConversionDetailView : UserControl
     }
 
     private void BackButton_Click(object sender, RoutedEventArgs e) => BackRequested?.Invoke();
+
+    private void SwapButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SwapDirectionCommand.CanExecute(null))
+        {
+            ViewModel.SwapDirectionCommand.Execute(null);
+            SwapAnimation.Begin();
+        }
+    }
 
     public Visibility BoolToVis(bool value) => value ? Visibility.Visible : Visibility.Collapsed;
 }

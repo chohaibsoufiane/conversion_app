@@ -2,10 +2,10 @@ using System.Threading;
 
 namespace ConversionApp.PdfTools.Tools;
 
-public sealed class PdfToWordEngine : IDocumentTool
+public sealed class PdfToExcelEngine : IDocumentTool
 {
-    public string Name => "PDF to Word";
-    public string Description => "Convert PDF documents back into editable Microsoft Word files.";
+    public string Name => "PDF to Excel";
+    public string Description => "Extract tables and data from PDF documents into Excel spreadsheets.";
 
     public ToolResult Execute(ToolRequest request, CancellationToken cancellationToken = default)
     {

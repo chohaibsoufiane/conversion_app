@@ -5,6 +5,24 @@
     xmlns:local="using:ConversionApp.PdfTools"
     xmlns:vm="using:ConversionApp.ViewModels">
 
+    <UserControl.Resources>
+        <Storyboard x:Name="SwapAnimation">
+            <DoubleAnimation Storyboard.TargetName="SwapIconTransform"
+                             Storyboard.TargetProperty="Rotation"
+                             By="180" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase Amplitude="0.5" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="SourceText"
+                             Storyboard.TargetProperty="Opacity"
+                             From="1" To="0.4" Duration="0:0:0.2" AutoReverse="True"/>
+            <DoubleAnimation Storyboard.TargetName="TargetText"
+                             Storyboard.TargetProperty="Opacity"
+                             From="1" To="0.4" Duration="0:0:0.2" AutoReverse="True"/>
+        </Storyboard>
+    </UserControl.Resources>
+
     <Grid>
         <!-- Navigation -->
         <Button Click="BackButton_Click"
@@ -13,100 +31,182 @@
                 Margin="20,20,0,0"
                 Background="Transparent"
                 BorderThickness="0"
-                ToolTipService.ToolTip="Back to PDF Tools">
+                ToolTipService.ToolTip="Back to PDF Tools"
+                Canvas.ZIndex="10">
             <StackPanel Orientation="Horizontal" Spacing="8">
                 <FontIcon Glyph="&#xE72B;" FontSize="16"/>
                 <TextBlock Text="Back"/>
             </StackPanel>
         </Button>
 
-        <!-- Selection Phase -->
-        <Grid x:Name="FileSelectionPhase" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel Spacing="28" HorizontalAlignment="Center" MaxWidth="640" Padding="40">
+        <ScrollViewer>
+            <StackPanel Padding="0,80,0,40" Spacing="48">
                 
-                <!-- Header with Title and Swap Button -->
-                <StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="{x:Bind ViewModel.ActiveToolTitle, Mode=OneWay}" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <Button Command="{x:Bind ViewModel.SwapDirectionCommand}"
-                            Padding="8" 
-                            CornerRadius="20" 
-                            Background="Transparent"
-                            BorderThickness="0"
-                            ToolTipService.ToolTip="Swap Direction">
-                        <FontIcon Glyph="&#xE8AB;" FontSize="18"/>
-                    </Button>
-                </StackPanel>
-                
-                <Grid x:Name="DropZone" AllowDrop="True" DragOver="DropZone_DragOver" DragLeave="DropZone_DragLeave" Drop="DropZone_Drop" MinWidth="520" MinHeight="220">
-                    <!-- Dashed Outline -->
-                    <Rectangle Stroke="{ThemeResource AccentFillColorDefaultBrush}" 
-                               StrokeThickness="2" 
-                               StrokeDashArray="4 2" 
-                               RadiusX="16" RadiusY="16"
-                               Fill="{ThemeResource AccentFillColorTertiaryBrush}"
-                               Opacity="0.1"/>
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- HEADER WITH STABLE SWAP BUTTON                              -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="220"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="SourceText" Grid.Column="0" 
+                               Text="{x:Bind ViewModel.SourceFormat, Mode=OneWay}" 
+                               Style="{StaticResource TitleTextBlockStyle}" 
+                               FontSize="36" FontWeight="Bold"
+                               HorizontalAlignment="Right" VerticalAlignment="Center"/>
                     
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
-                        <FontIcon Glyph="&#xE8E5;" FontSize="48" Foreground="{ThemeResource AccentFillColorDefaultBrush}" HorizontalAlignment="Center"/>
-                        <Button Click="ChooseFileButton_Click" HorizontalAlignment="Center" Padding="24,10" Style="{StaticResource AccentButtonStyle}">
-                            <TextBlock Text="CHOOSE FILE" FontWeight="SemiBold"/>
+                    <FontIcon Grid.Column="1" 
+                              Glyph="&#xE72A;" 
+                              FontSize="24" 
+                              Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                              Margin="40,0"/>
+
+                    <TextBlock x:Name="TargetText" Grid.Column="2" 
+                               Text="{x:Bind ViewModel.TargetFormat, Mode=OneWay}" 
+                               Style="{StaticResource TitleTextBlockStyle}" 
+                               FontSize="36" FontWeight="Bold"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- SELECTION PHASE (The Accented Zone)                         -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <Grid x:Name="FileSelectionPhase" HorizontalAlignment="Center" Width="800">
+                    <Grid x:Name="DropZone" 
+                          AllowDrop="True" 
+                          DragOver="DropZone_DragOver" 
+                          DragLeave="DropZone_DragLeave" 
+                          Drop="DropZone_Drop" 
+                          Height="280">
+                        
+                        <!-- Main Background -->
+                        <Border Background="{ThemeResource AccentFillColorDefaultBrush}" CornerRadius="12">
+                            <!-- Inset Dashed Outline -->
+                            <Rectangle Margin="10"
+                                       Stroke="White" 
+                                       StrokeThickness="1" 
+                                       StrokeDashArray="4 2" 
+                                       RadiusX="8" RadiusY="8"
+                                       Opacity="0.3"/>
+                        </Border>
+                        
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="28">
+                            <!-- Choose Files Button (Fixed Split Style) -->
+                            <Border CornerRadius="8" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+                                <Grid Height="64">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="1"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Button Grid.Column="0" 
+                                            Click="ChooseFileButton_Click" 
+                                            Padding="40,0" 
+                                            Background="Transparent" 
+                                            Foreground="Black" 
+                                            BorderThickness="0"
+                                            VerticalAlignment="Stretch">
+                                        <StackPanel Orientation="Horizontal" Spacing="14">
+                                            <FontIcon Glyph="&#xE8E5;" FontSize="22"/>
+                                            <TextBlock Text="CHOOSE FILES" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    
+                                    <Border Grid.Column="1" Background="#EEE" VerticalAlignment="Stretch" Margin="0,12"/>
+                                    
+                                    <Button Grid.Column="2" 
+                                            Padding="20,0" 
+                                            Background="Transparent" 
+                                            Foreground="Black" 
+                                            BorderThickness="0"
+                                            VerticalAlignment="Stretch">
+                                        <FontIcon Glyph="&#xE70D;" FontSize="18" VerticalAlignment="Center"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+
+                            <TextBlock Text="or drop files here" 
+                                       Foreground="White" 
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       Opacity="0.8"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- CONVERTING PHASE                                            -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <Grid x:Name="ConvertingPhase" Visibility="Collapsed" HorizontalAlignment="Center" Width="800">
+                    <StackPanel Spacing="24">
+                        <!-- File Card -->
+                        <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" 
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" 
+                                BorderThickness="1" CornerRadius="12" Padding="24,20">
+                            <Grid ColumnSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <FontIcon Glyph="&#xE8A5;" FontSize="40" Foreground="{ThemeResource AccentFillColorDefaultBrush}" VerticalAlignment="Center"/>
+                                
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="4">
+                                    <TextBlock x:Name="SelectedFileName" FontSize="18" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="SelectedFileSize" Style="{StaticResource CaptionTextBlockStyle}" FontSize="14"/>
+                                </StackPanel>
+                                
+                                <Button Grid.Column="2" Click="RemoveFile_Click" Background="Transparent" BorderThickness="0" Padding="12">
+                                    <FontIcon Glyph="&#xE711;" FontSize="20"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+
+                        <!-- Big Convert Button -->
+                        <Button Style="{StaticResource AccentButtonStyle}" 
+                                Command="{x:Bind ViewModel.ConvertCommand}" 
+                                HorizontalAlignment="Stretch" 
+                                Padding="0,20" 
+                                CornerRadius="12"
+                                BorderThickness="0">
+                            <StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center">
+                                <TextBlock Text="CONVERT NOW" FontSize="20" FontWeight="Bold"/>
+                                <ProgressRing IsActive="{x:Bind ViewModel.IsProcessing, Mode=OneWay}" Width="24" Height="24" Foreground="White"/>
+                            </StackPanel>
                         </Button>
-                        <TextBlock Text="or drop a file here" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center"/>
+
+                        <!-- Status Card -->
+                        <Border Visibility="{x:Bind BoolToVis(ViewModel.IsStatusVisible), Mode=OneWay}" 
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" 
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" 
+                                BorderThickness="1" CornerRadius="12" Padding="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="14" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xE73E;" Foreground="#4CAF50" FontSize="24" Visibility="{x:Bind BoolToVis(ViewModel.IsSuccess), Mode=OneWay}"/>
+                                    <FontIcon Glyph="&#xEA39;" Foreground="#F44336" FontSize="24" Visibility="{x:Bind BoolToVis(ViewModel.IsError), Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.StatusText, Mode=OneWay}" FontSize="16" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12" Visibility="{x:Bind BoolToVis(ViewModel.IsSuccess), Mode=OneWay}">
+                                    <Button Content="Open File" Command="{x:Bind ViewModel.OpenOutputCommand}" Style="{StaticResource DefaultButtonStyle}" />
+                                    <Button Content="Open Folder" Command="{x:Bind ViewModel.OpenOutputFolderCommand}" Style="{StaticResource AccentButtonStyle}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
                     </StackPanel>
                 </Grid>
+
             </StackPanel>
-        </Grid>
-
-        <!-- Converting Phase -->
-        <Grid x:Name="ConvertingPhase" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel Spacing="24" HorizontalAlignment="Center" MaxWidth="640" Padding="40">
-                
-                <!-- Header with Title and Swap Button -->
-                <StackPanel Orientation="Horizontal" Spacing="16" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="{x:Bind ViewModel.ActiveToolTitle, Mode=OneWay}" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <Button Command="{x:Bind ViewModel.SwapDirectionCommand}"
-                            Padding="8" 
-                            CornerRadius="20" 
-                            Background="Transparent"
-                            BorderThickness="0"
-                            ToolTipService.ToolTip="Swap Direction">
-                        <FontIcon Glyph="&#xE8AB;" FontSize="18"/>
-                    </Button>
-                </StackPanel>
-                
-                <!-- File Card -->
-                <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="10" Padding="20,16" MinWidth="480">
-                    <Grid ColumnSpacing="14">
-                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                        <FontIcon Glyph="&#xE8A5;" FontSize="28" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock x:Name="SelectedFileName" FontWeight="SemiBold"/>
-                            <TextBlock x:Name="SelectedFileSize" Style="{StaticResource CaptionTextBlockStyle}"/>
-                        </StackPanel>
-                        <Button Grid.Column="2" Click="RemoveFile_Click" Background="Transparent" BorderThickness="0"><FontIcon Glyph="&#xE711;"/></Button>
-                    </Grid>
-                </Border>
-
-                <!-- Convert Button -->
-                <Button Style="{StaticResource AccentButtonStyle}" 
-                        Command="{x:Bind ViewModel.ConvertCommand}" 
-                        HorizontalAlignment="Stretch" Padding="0,14" CornerRadius="8">
-                    <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
-                        <TextBlock Text="Convert" FontWeight="SemiBold"/>
-                        <ProgressRing IsActive="{x:Bind ViewModel.IsProcessing, Mode=OneWay}" Width="20" Height="20"/>
-                    </StackPanel>
-                </Button>
-
-                <!-- Status Card -->
-                <Border Visibility="{x:Bind BoolToVis(ViewModel.IsStatusVisible), Mode=OneWay}" 
-                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Padding="16,12">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <FontIcon Glyph="&#xE73E;" Foreground="#4CAF50" Visibility="{x:Bind BoolToVis(ViewModel.IsSuccess), Mode=OneWay}"/>
-                        <FontIcon Glyph="&#xEA39;" Foreground="#F44336" Visibility="{x:Bind BoolToVis(ViewModel.IsError), Mode=OneWay}"/>
-                        <TextBlock Text="{x:Bind ViewModel.StatusText, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-        </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

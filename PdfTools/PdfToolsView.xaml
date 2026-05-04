@@ -61,10 +61,10 @@
                       VerticalScrollBarVisibility="Auto">
             <ItemsRepeater x:Name="ToolCardsRepeater">
                 <ItemsRepeater.Layout>
-                    <UniformGridLayout MinItemWidth="220"
-                                       MinItemHeight="180"
-                                       MinRowSpacing="16"
-                                       MinColumnSpacing="16"
+                    <UniformGridLayout MinItemWidth="320"
+                                       MinItemHeight="240"
+                                       MinRowSpacing="24"
+                                       MinColumnSpacing="24"
                                        ItemsStretch="None"
                                        ItemsJustification="Center"/>
                 </ItemsRepeater.Layout>
@@ -73,8 +73,8 @@
                     <DataTemplate x:DataType="local:ToolCardViewModel">
                         <Button HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                Padding="20"
-                                CornerRadius="10"
+                                Padding="28"
+                                CornerRadius="12"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                                 BorderThickness="1"
@@ -92,31 +92,32 @@
                                     <!-- Tool icon -->
                                     <FontIcon Grid.Row="0"
                                               Glyph="{x:Bind IconGlyph}"
-                                              FontSize="28"
+                                              FontSize="40"
                                               HorizontalAlignment="Left"
                                               Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
 
                                     <!-- Name + description -->
-                                    <StackPanel Grid.Row="1" Margin="0,12,0,0" Spacing="4">
+                                    <StackPanel Grid.Row="1" Margin="0,16,0,0" Spacing="8">
                                         <TextBlock Text="{x:Bind ToolName}"
+                                                   FontSize="20"
                                                    FontWeight="SemiBold"
                                                    TextWrapping="Wrap"/>
                                         <TextBlock Text="{x:Bind ToolDescription}"
-                                                   Style="{StaticResource CaptionTextBlockStyle}"
+                                                   FontSize="14"
                                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                    TextWrapping="Wrap"
-                                                   MaxLines="3"
+                                                   MaxLines="4"
                                                    TextTrimming="CharacterEllipsis"/>
                                     </StackPanel>
 
                                     <!-- Chevron -->
                                     <FontIcon Grid.Row="2"
                                               Glyph="&#xE76C;"
-                                              FontSize="12"
+                                              FontSize="16"
                                               HorizontalAlignment="Right"
                                               VerticalAlignment="Bottom"
                                               Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-                                              Margin="0,8,0,0"/>
+                                              Margin="0,12,0,0"/>
                                 </Grid>
                         </Button>
                     </DataTemplate>

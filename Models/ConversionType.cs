@@ -5,5 +5,6 @@ public enum ConversionType
     WordToPdf,
     PdfToWord,
     ExcelToPdf,
-    PdfToExcel
+    PdfToExcel,
+    ImageToPdf
 }

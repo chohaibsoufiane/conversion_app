@@ -50,6 +50,12 @@ public partial class MainWindowViewModel : ObservableObject
     private string _activeToolTitle = "Word to PDF";
 
     [ObservableProperty]
+    private string _sourceFormat = "Word";
+
+    [ObservableProperty]
+    private string _targetFormat = "PDF";
+
+    [ObservableProperty]
     private string _inputFilePath = string.Empty;
 
     [ObservableProperty]
@@ -194,18 +200,29 @@ public partial class MainWindowViewModel : ObservableObject
             case ConversionType.WordToPdf:
                 CurrentConversionType = ConversionType.PdfToWord;
                 ActiveToolTitle = "PDF to Word";
+                SourceFormat = "PDF";
+                TargetFormat = "Word";
                 break;
             case ConversionType.PdfToWord:
                 CurrentConversionType = ConversionType.WordToPdf;
                 ActiveToolTitle = "Word to PDF";
+                SourceFormat = "Word";
+                TargetFormat = "PDF";
                 break;
             case ConversionType.ExcelToPdf:
                 CurrentConversionType = ConversionType.PdfToExcel;
                 ActiveToolTitle = "PDF to Excel";
+                SourceFormat = "PDF";
+                TargetFormat = "Excel";
                 break;
             case ConversionType.PdfToExcel:
                 CurrentConversionType = ConversionType.ExcelToPdf;
                 ActiveToolTitle = "Excel to PDF";
+                SourceFormat = "Excel";
+                TargetFormat = "PDF";
+                break;
+            case ConversionType.ImageToPdf:
+                // No reverse direction implemented yet, so just keep it
                 break;
         }
 
@@ -218,6 +235,7 @@ public partial class MainWindowViewModel : ObservableObject
                 ConversionType.PdfToWord => ".docx",
                 ConversionType.ExcelToPdf => ".pdf",
                 ConversionType.PdfToExcel => ".xlsx",
+                ConversionType.ImageToPdf => ".pdf",
                 _ => ".pdf"
             };
             OutputFilePath = Path.ChangeExtension(InputFilePath, ext);
@@ -257,6 +275,9 @@ public partial class MainWindowViewModel : ObservableObject
                     case ConversionType.PdfToExcel:
                         await LibreOfficeProcessor.ConvertAsync(InputFilePath, OutputFilePath, "xlsx");
                         break;
+                    case ConversionType.ImageToPdf:
+                        await LibreOfficeProcessor.ConvertAsync(InputFilePath, OutputFilePath, "pdf");
+                        break;
                 }
             });
 
@@ -285,6 +306,43 @@ public partial class MainWindowViewModel : ObservableObject
             var psi = new System.Diagnostics.ProcessStartInfo
             {
                 FileName = item.FilePath,
+                UseShellExecute = true
+            };
+            System.Diagnostics.Process.Start(psi);
+        }
+        catch { /* Ignore open errors */ }
+    }
+
+    [RelayCommand]
+    private void OpenOutput()
+    {
+        if (string.IsNullOrEmpty(OutputFilePath) || !File.Exists(OutputFilePath)) return;
+
+        try
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = OutputFilePath,
+                UseShellExecute = true
+            };
+            System.Diagnostics.Process.Start(psi);
+        }
+        catch { /* Ignore open errors */ }
+    }
+
+    [RelayCommand]
+    private void OpenOutputFolder()
+    {
+        if (string.IsNullOrEmpty(OutputFilePath)) return;
+        var folder = Path.GetDirectoryName(OutputFilePath);
+        if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder)) return;
+
+        try
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "explorer.exe",
+                Arguments = $"\"{folder}\"",
                 UseShellExecute = true
             };
             System.Diagnostics.Process.Start(psi);

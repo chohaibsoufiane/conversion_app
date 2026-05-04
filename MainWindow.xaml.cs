@@ -248,12 +248,44 @@ public sealed partial class MainWindow : Window
         var type = toolName switch
         {
             "Word to PDF" => Models.ConversionType.WordToPdf,
+            "PDF to Word" => Models.ConversionType.PdfToWord,
             "Excel to PDF" => Models.ConversionType.ExcelToPdf,
+            "PDF to Excel" => Models.ConversionType.PdfToExcel,
+            "Image to PDF" => Models.ConversionType.ImageToPdf,
             _ => Models.ConversionType.WordToPdf
         };
 
         ViewModel.CurrentConversionType = type;
         ViewModel.ActiveToolTitle = toolName;
+        
+        // Set initial formats for the header
+        switch (type)
+        {
+            case Models.ConversionType.WordToPdf:
+                ViewModel.SourceFormat = "Word";
+                ViewModel.TargetFormat = "PDF";
+                break;
+            case Models.ConversionType.PdfToWord:
+                ViewModel.SourceFormat = "PDF";
+                ViewModel.TargetFormat = "Word";
+                break;
+            case Models.ConversionType.ExcelToPdf:
+                ViewModel.SourceFormat = "Excel";
+                ViewModel.TargetFormat = "PDF";
+                break;
+            case Models.ConversionType.PdfToExcel:
+                ViewModel.SourceFormat = "PDF";
+                ViewModel.TargetFormat = "Excel";
+                break;
+            case Models.ConversionType.ImageToPdf:
+                ViewModel.SourceFormat = "Image";
+                ViewModel.TargetFormat = "PDF";
+                break;
+            default:
+                ViewModel.SourceFormat = "Word";
+                ViewModel.TargetFormat = "PDF";
+                break;
+        }
 
         ConversionDetailView.Initialize(ViewModel, WinRT.Interop.WindowNative.GetWindowHandle(this));
         NavigateTo(ConversionDetailView);

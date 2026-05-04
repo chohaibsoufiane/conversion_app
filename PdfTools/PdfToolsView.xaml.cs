@@ -116,6 +116,7 @@ public sealed partial class PdfToolsView : UserControl
         var n when n.Contains("watermark")=> "\uE8D6", // Stamp
         var n when n.Contains("excel")    => "\uE9F9", // Table / spreadsheet
         var n when n.Contains("word")     => "\uE8A5", // Document
+        var n when n.Contains("image")    => "\uEB9F", // Image
         var n when n.Contains("pdf")      => "\uEA90", // PDF
         _                                 => "\uE8A5", // Generic page
     };
