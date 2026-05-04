@@ -67,6 +67,12 @@ public sealed partial class MainWindow : Window
             // Seed the current view tracker so the first real navigation animates out correctly.
             _currentView = DashboardView;
         };
+
+        // Add global pointer pressed handler for back/forward mouse buttons
+        if (this.Content is UIElement rootElement)
+        {
+            rootElement.AddHandler(UIElement.PointerPressedEvent, new Microsoft.UI.Xaml.Input.PointerEventHandler(OnPointerPressed), true);
+        }
     }
 
     private void BackdropSlider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
@@ -96,6 +102,13 @@ public sealed partial class MainWindow : Window
 
     // Tracks which view is currently shown so the out-animation knows what to collapse.
     private UIElement? _currentView = null;
+    private System.Action? _currentOnBeforeIn = null;
+    
+    // History stacks for Back/Forward navigation
+    private System.Collections.Generic.Stack<(UIElement View, System.Action? Action)> _backStack = new();
+    private System.Collections.Generic.Stack<(UIElement View, System.Action? Action)> _forwardStack = new();
+    private bool _isNavigatingBackOrForward = false;
+
     // Guard: prevent re-entrant navigation while an out-animation is running.
     private bool _isAnimating = false;
 
@@ -109,7 +122,17 @@ public sealed partial class MainWindow : Window
         if (_isAnimating || inView == _currentView) return;
 
         var leaving = _currentView;
+
+        if (leaving != null && !_isNavigatingBackOrForward)
+        {
+            _backStack.Push((leaving, _currentOnBeforeIn));
+            _forwardStack.Clear();
+        }
+
+        _currentOnBeforeIn = onBeforeIn;
         _currentView = inView;
+
+        UpdateNavViewSelection(inView);
 
         if (leaving != null && leaving.Visibility == Visibility.Visible)
         {
@@ -128,6 +151,79 @@ public sealed partial class MainWindow : Window
         {
             onBeforeIn?.Invoke();
             BuildAnimateIn(inView).Begin();
+        }
+    }
+
+    private void UpdateNavViewSelection(UIElement view)
+    {
+        if (view == SettingsView)
+        {
+            NavView.SelectedItem = NavView.SettingsItem;
+            return;
+        }
+
+        string? tag = null;
+        if (view == DashboardView) tag = "Dashboard";
+        else if (view == BatchConverterView) tag = "BatchConverter";
+        else if (view == PdfToolsView || view == ConversionDetailView) tag = "PdfTools";
+
+        if (tag != null)
+        {
+            foreach (var item in NavView.MenuItems)
+            {
+                if (item is Microsoft.UI.Xaml.Controls.NavigationViewItem navItem && navItem.Tag as string == tag)
+                {
+                    NavView.SelectedItem = navItem;
+                    break;
+                }
+            }
+        }
+    }
+
+    private void GoBack()
+    {
+        if (_isAnimating || _backStack.Count == 0) return;
+
+        _isNavigatingBackOrForward = true;
+        var (view, action) = _backStack.Pop();
+        
+        if (_currentView != null)
+        {
+            _forwardStack.Push((_currentView, _currentOnBeforeIn));
+        }
+
+        NavigateTo(view, action);
+        _isNavigatingBackOrForward = false;
+    }
+
+    private void GoForward()
+    {
+        if (_isAnimating || _forwardStack.Count == 0) return;
+
+        _isNavigatingBackOrForward = true;
+        var (view, action) = _forwardStack.Pop();
+        
+        if (_currentView != null)
+        {
+            _backStack.Push((_currentView, _currentOnBeforeIn));
+        }
+
+        NavigateTo(view, action);
+        _isNavigatingBackOrForward = false;
+    }
+
+    private void OnPointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        var properties = e.GetCurrentPoint(this.Content).Properties;
+        if (properties.IsXButton1Pressed)
+        {
+            GoBack();
+            e.Handled = true;
+        }
+        else if (properties.IsXButton2Pressed)
+        {
+            GoForward();
+            e.Handled = true;
         }
     }
 
@@ -305,7 +401,17 @@ public sealed partial class MainWindow : Window
 
     /// <summary>Returns from the conversion view back to the PDF tools list.</summary>
     private void ConversionDetailView_BackRequested()
-        => NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
+    {
+        // Try global back first if it was entered naturally, otherwise fallback to explicitly navigating
+        if (_backStack.Count > 0 && _backStack.Peek().View == PdfToolsView)
+        {
+            GoBack();
+        }
+        else
+        {
+            NavigateTo(PdfToolsView, () => PdfToolsView.RefreshCards());
+        }
+    }
 
     private void SplashOverlay_Loaded(object sender, RoutedEventArgs e)
     {
