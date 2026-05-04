@@ -16,7 +16,10 @@ public sealed class ToolCardViewModel
     /// Segoe Fluent Icons glyph code. Override per-tool for a unique icon;
     /// falls back to a generic document icon if not specified.
     /// </summary>
-    public string IconGlyph { get; init; } = "\uE8A5"; // Page icon
+    public string SourceIconPath  { get; init; } = string.Empty;
+    public string TargetIconPath  { get; init; } = string.Empty;
+    public bool IsDirectional { get; init; }
+    public Visibility ArrowVisibility => IsDirectional ? Visibility.Visible : Visibility.Collapsed;
 }
 
 /// <summary>
@@ -78,12 +81,16 @@ public sealed partial class PdfToolsView : UserControl
         ToolScrollViewer.Visibility = Visibility.Visible;
 
         // Map IDocumentTool → ToolCardViewModel
-        // IconGlyph can be extended via a per-tool attribute or dictionary later
-        var cards = tools.Select(t => new ToolCardViewModel
-        {
-            ToolName        = t.Name,
-            ToolDescription = t.Description,
-            IconGlyph       = ResolveGlyph(t.Name),
+        var cards = tools.Select(t => {
+            var icons = ResolveIcons(t.Name);
+            return new ToolCardViewModel
+            {
+                ToolName        = t.Name,
+                ToolDescription = t.Description,
+                SourceIconPath  = icons.Source,
+                TargetIconPath  = icons.Target,
+                IsDirectional   = icons.IsDirectional,
+            };
         }).ToList();
 
         ToolCardsRepeater.ItemsSource = cards;
@@ -100,24 +107,28 @@ public sealed partial class PdfToolsView : UserControl
     }
 
     // -------------------------------------------------------------------------
-    // Glyph mapping — extend as new tools are added
+    // Icon mapping — extend as new tools are added
     // -------------------------------------------------------------------------
 
-    private static string ResolveGlyph(string toolName) => toolName.ToLowerInvariant() switch
+    private static (string Source, string Target, bool IsDirectional) ResolveIcons(string toolName)
     {
-        var n when n.Contains("merge")    => "\uE71E", // Merge icon
-        var n when n.Contains("split")    => "\uE8C6", // Split icon
-        var n when n.Contains("compress") => "\uE8AF", // Compress / zip
-        var n when n.Contains("convert")  => "\uE8AB", // Convert
-        var n when n.Contains("encrypt")  => "\uE72E", // Lock
-        var n when n.Contains("decrypt")  => "\uE785", // Unlock
-        var n when n.Contains("extract")  => "\uE7B8", // Extract
-        var n when n.Contains("rotate")   => "\uE7AD", // Rotate
-        var n when n.Contains("watermark")=> "\uE8D6", // Stamp
-        var n when n.Contains("excel")    => "\uE9F9", // Table / spreadsheet
-        var n when n.Contains("word")     => "\uE8A5", // Document
-        var n when n.Contains("image")    => "\uEB9F", // Image
-        var n when n.Contains("pdf")      => "\uEA90", // PDF
-        _                                 => "\uE8A5", // Generic page
+        var lower = toolName.ToLowerInvariant();
+        if (lower.Contains(" to "))
+        {
+            var parts = lower.Split(" to ");
+            return (ResolveSingleIcon(parts[0]), ResolveSingleIcon(parts[1]), true);
+        }
+        // Return a dummy valid path for Target to prevent WinUI Image parsing crash, but it won't be shown
+        return (ResolveSingleIcon(lower), "ms-appx:///Assets/Icons/generic.svg", false);
+    }
+
+    private static string ResolveSingleIcon(string namePart) => namePart switch
+    {
+        var n when n.Contains("excel")    => "ms-appx:///Assets/Icons/excel.png",
+        var n when n.Contains("word")     => "ms-appx:///Assets/Icons/word.png",
+        var n when n.Contains("powerpoint")=> "ms-appx:///Assets/Icons/powerpoint.png",
+        var n when n.Contains("image")    => "ms-appx:///Assets/Icons/image.svg",
+        var n when n.Contains("pdf")      => "ms-appx:///Assets/Icons/pdf.png",
+        _                                 => "ms-appx:///Assets/Icons/generic.svg",
     };
 }

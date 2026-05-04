@@ -1,12 +1,12 @@
-System.Runtime.InteropServices.COMException (0x800F1000): No installed components were detected.
+System.ArgumentException: The parameter is incorrect.
 
-Operation is not valid on an active Animation or Storyboard.  Root Storyboard must be stopped first.
+The value cannot be converted to type ImageSource
    at WinRT.ExceptionHelpers.<ThrowExceptionForHR>g__Throw|38_0(Int32 hr)
-   at ABI.Microsoft.UI.Xaml.Media.Animation.IStoryboardStaticsMethods.SetTarget(IObjectReference _obj, Timeline timeline, DependencyObject target)
-   at Microsoft.UI.Xaml.Media.Animation.Storyboard.SetTarget(Timeline timeline, DependencyObject target)
-   at ConversionApp.MainWindow.AnimateIn(UIElement view) in E:\Everything_Else\projects\conversion_app\MainWindow.xaml.cs:line 132
-   at ConversionApp.MainWindow.NavigateTo(UIElement inView, Action onBeforeIn) in E:\Everything_Else\projects\conversion_app\MainWindow.xaml.cs:line 125
-   at ConversionApp.MainWindow.NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) in E:\Everything_Else\projects\conversion_app\MainWindow.xaml.cs:line 142
-   at WinRT._EventSource_global__Windows_Foundation_TypedEventHandler_global__Microsoft_UI_Xaml_Controls_NavigationView__global__Microsoft_UI_Xaml_Controls_NavigationViewItemInvokedEventArgs_.EventState.<GetEventInvoke>b__1_0(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-   at ABI.Windows.Foundation.TypedEventHandler`2.Do_Abi_Invoke[TSenderAbi,TResultAbi](Void* thisPtr, TSenderAbi sender, TResultAbi args)
-Operation is not valid on an active Animation or Storyboard.  Root Storyboard must be stopped first.
+   at WinRT.ExceptionHelpers.ThrowExceptionForHR(Int32 hr)
+   at ABI.Microsoft.UI.Xaml.Markup.IXamlBindingHelperStaticsMethods.ConvertValue(IObjectReference _obj, Type type, Object value)
+   at Microsoft.UI.Xaml.Markup.XamlBindingHelper.ConvertValue(Type type, Object value)
+   at ConversionApp.PdfTools.PdfToolsView.PdfToolsView_obj6_Bindings.Update_TargetIconPath(String obj, Int32 phase) in E:\Everything_Else\projects\conversion_app\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PdfTools\PdfToolsView.g.cs:line 324
+   at ConversionApp.PdfTools.PdfToolsView.PdfToolsView_obj6_Bindings.Update_(ToolCardViewModel obj, Int32 phase) in E:\Everything_Else\projects\conversion_app\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PdfTools\PdfToolsView.g.cs:line 256
+   at ConversionApp.PdfTools.PdfToolsView.PdfToolsView_obj6_Bindings.ProcessBindings(Object item, Int32 itemIndex, Int32 phase, Int32& nextPhase) in E:\Everything_Else\projects\conversion_app\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PdfTools\PdfToolsView.g.cs:line 203
+   at ABI.Microsoft.UI.Xaml.Markup.IDataTemplateComponent.Do_Abi_ProcessBindings_1(IntPtr thisPtr, IntPtr item, Int32 itemIndex, Int32 phase, Int32* nextPhase)
+The value cannot be converted to type ImageSource

@@ -56,6 +56,12 @@ public partial class MainWindowViewModel : ObservableObject
     private string _targetFormat = "PDF";
 
     [ObservableProperty]
+    private string _sourceIconPath = string.Empty;
+
+    [ObservableProperty]
+    private string _targetIconPath = string.Empty;
+
+    [ObservableProperty]
     private string _inputFilePath = string.Empty;
 
     [ObservableProperty]

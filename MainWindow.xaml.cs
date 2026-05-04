@@ -264,26 +264,38 @@ public sealed partial class MainWindow : Window
             case Models.ConversionType.WordToPdf:
                 ViewModel.SourceFormat = "Word";
                 ViewModel.TargetFormat = "PDF";
+                ViewModel.SourceIconPath = "ms-appx:///Assets/Icons/word.png";
+                ViewModel.TargetIconPath = "ms-appx:///Assets/Icons/pdf.png";
                 break;
             case Models.ConversionType.PdfToWord:
                 ViewModel.SourceFormat = "PDF";
                 ViewModel.TargetFormat = "Word";
+                ViewModel.SourceIconPath = "ms-appx:///Assets/Icons/pdf.png";
+                ViewModel.TargetIconPath = "ms-appx:///Assets/Icons/word.png";
                 break;
             case Models.ConversionType.ExcelToPdf:
                 ViewModel.SourceFormat = "Excel";
                 ViewModel.TargetFormat = "PDF";
+                ViewModel.SourceIconPath = "ms-appx:///Assets/Icons/excel.png";
+                ViewModel.TargetIconPath = "ms-appx:///Assets/Icons/pdf.png";
                 break;
             case Models.ConversionType.PdfToExcel:
                 ViewModel.SourceFormat = "PDF";
                 ViewModel.TargetFormat = "Excel";
+                ViewModel.SourceIconPath = "ms-appx:///Assets/Icons/pdf.png";
+                ViewModel.TargetIconPath = "ms-appx:///Assets/Icons/excel.png";
                 break;
             case Models.ConversionType.ImageToPdf:
                 ViewModel.SourceFormat = "Image";
                 ViewModel.TargetFormat = "PDF";
+                ViewModel.SourceIconPath = "ms-appx:///Assets/Icons/image.svg";
+                ViewModel.TargetIconPath = "ms-appx:///Assets/Icons/pdf.png";
                 break;
             default:
                 ViewModel.SourceFormat = "Word";
                 ViewModel.TargetFormat = "PDF";
+                ViewModel.SourceIconPath = "ms-appx:///Assets/Icons/generic.svg";
+                ViewModel.TargetIconPath = "ms-appx:///Assets/Icons/generic.svg";
                 break;
         }
 

@@ -89,12 +89,19 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <!-- Tool icon -->
-                                    <FontIcon Grid.Row="0"
-                                              Glyph="{x:Bind IconGlyph}"
-                                              FontSize="40"
-                                              HorizontalAlignment="Left"
-                                              Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                                    <!-- Tool icons -->
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Image Width="42" Height="42" Source="{x:Bind SourceIconPath}"/>
+                                        
+                                        <FontIcon Glyph="&#xE72A;" 
+                                                  FontSize="16" 
+                                                  Foreground="{ThemeResource TextFillColorSecondaryBrush}" 
+                                                  Visibility="{x:Bind ArrowVisibility}"/>
+                                                  
+                                        <Image Width="42" Height="42" 
+                                               Source="{x:Bind TargetIconPath}" 
+                                               Visibility="{x:Bind ArrowVisibility}"/>
+                                    </StackPanel>
 
                                     <!-- Name + description -->
                                     <StackPanel Grid.Row="1" Margin="0,16,0,0" Spacing="8">
